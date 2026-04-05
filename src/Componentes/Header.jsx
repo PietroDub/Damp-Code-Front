@@ -3,9 +3,10 @@ import "../style.css"
 
 const Header = () => {
   return (
-    <header class='bg-black h-10 w-full'>
-        <p>oi</p>
-    </header>
+    <div className="bg-fundo-claro h-20 w-full">
+      <p>oi</p>
+    </div>
+    
   )
 }
 
