@@ -4,7 +4,9 @@ import "../style.css"
 
 const Home = () => {
   return (
-    <Header />
+    <div className='bg-fundo w-full h-screen'>
+      <Header />
+    </div>
   )
 }
 
