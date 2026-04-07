@@ -9,7 +9,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <header className="bg-fundo-claro h-20 w-full flex items-center justify-center">
+    <header className="bg-fundo-claro h-auto w-full flex items-center justify-center">
       <div className="w-11/12 lg:w-10/12 flex items-center justify-between">
         <img src="/src/assets/DAMPCode.svg" className="md:max-w-3/12 pt-5" alt="damp-code-logo" />
           {/* Modo large -> extra large */}
