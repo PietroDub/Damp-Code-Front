@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "../style.css"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import { faBars } from "@fortawesome/free-solid-svg-icons"
+
 
 const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
   return (
     <header className="bg-fundo-claro h-20 w-full flex items-center justify-center">
       <div className="w-11/12 lg:w-10/12 flex items-center justify-between">
@@ -38,6 +43,15 @@ const Header = () => {
             </div>
           </div>
       </div>
+
+    {/* <div class="flex flex-col md:hidden p-4 space-y-2  rounded shadow" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+      <span class="block w-8 h-0.5 bg-amarelo animate-pulse"></span>
+      <span class="block w-8 h-0.5 bg-amarelo animate-pulse"></span>
+      <span class="block w-8 h-0.5 bg-amarelo animate-pulse"></span>
+    </div> */}
+    <div className='flex md:hidden'>
+      <FontAwesomeIcon icon={faBars} className="text-amarelo text-2xl "/>
+    </div>
     </header>
     
   )
