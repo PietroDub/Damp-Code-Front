@@ -3,6 +3,8 @@ import Header from '../Componentes/Header'
 import "../style.css"
 import Banner from '../Componentes/Home/banner'
 import Cards from '../Componentes/Home/Cards'
+import Ranking_Home from '../Componentes/Home/Ranking_Home'
+import Banner_empresa from '../Componentes/Home/banner_empresa'
 
 const Home = () => {
   return (
@@ -10,6 +12,8 @@ const Home = () => {
       <Header />
       <Banner />
       <Cards />
+      <Ranking_Home />
+      <Banner_empresa />
     </div>
   )
 }
