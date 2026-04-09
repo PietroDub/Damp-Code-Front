@@ -15,7 +15,7 @@ const Header = () => {
           {/* Modo large -> extra large */}
           <div className='hidden lg:flex w-4/6 xl:w-4/7'>
             <nav className='w-5/5 text-xl text-texto flex items-center justify-between'>
-              <a href="">Explorar</a>
+              <a href="/src/pages/Explore.jsx">Explorar</a>
               <a href="">Ranking</a>
               <a href="">Para Empresas</a>
               <a href="">Entrar</a>
