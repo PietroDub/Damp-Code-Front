@@ -6,6 +6,8 @@ import Cards from '../Componentes/Home/Cards'
 import Ranking_Home from '../Componentes/Home/Ranking_Home'
 import Banner_empresa from '../Componentes/Home/banner_empresa'
 import Game from '@/Componentes/Home/Game'
+import Comunidade_home from '@/Componentes/Home/Comunidade_home'
+import Footer from '@/Componentes/Footer'
 
 const Home = () => {
   return (
@@ -16,6 +18,8 @@ const Home = () => {
       <Ranking_Home />
       <Banner_empresa />
       <Game />
+      <Comunidade_home />
+      <Footer />
     </div>
   )
 }
