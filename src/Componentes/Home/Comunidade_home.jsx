@@ -7,7 +7,7 @@ const Comunidade_home = () => {
         <div className='w-9/10 text-start'>
             <Titulo texto1={"COMUNIDADE"} texto2={"ATIVA"} />
         </div>
-        <div className='grid grid-cols-1 grid-rows-4 md:grid-cols-2 md:grid-rows-2 gap-5 w-9/10 text-texto text-center'>
+        <div className='grid grid-cols-1 grid-rows-4 md:grid-cols-2 md:grid-rows-2 gap-5 w-8/10 text-texto text-center'>
             <div className='bg-fundo-claro h-50 flex flex-col justify-center p-5'>
                 <h1 className='text-xl bg-fundo-claro '>Comunidades por tecnologia</h1>
                 <p>Comunidades divididas por tecnologias para interagir, tirar duvidas e fazer networking, também são divididas por hackatons.</p>

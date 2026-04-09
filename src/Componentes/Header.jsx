@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import "../style.css"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import { faBars } from "@fortawesome/free-solid-svg-icons"
+import { Link } from 'react-router-dom'
 
 
 const Header = () => {
@@ -15,7 +16,7 @@ const Header = () => {
           {/* Modo large -> extra large */}
           <div className='hidden lg:flex w-4/6 xl:w-4/7'>
             <nav className='w-5/5 text-xl text-texto flex items-center justify-between'>
-              <a href="/src/pages/Explore.jsx">Explorar</a>
+              <Link to={'/explore'}>Explore</Link>
               <a href="">Ranking</a>
               <a href="">Para Empresas</a>
               <a href="">Entrar</a>
@@ -31,7 +32,7 @@ const Header = () => {
           {/* Modo mobile -> medium */}
           <div className='hidden md:flex lg:hidden'>
             <nav className='w-5/6 text-lg text-texto flex items-center justify-center gap-x-3'>
-              <a className='hover:text-primaria-hover' href="">Explorar</a>
+              <a to={'/explore'} className='hover:text-primaria-hover'>Explorar</a>
               <a className='hover:text-primaria-hover' href="">Ranking</a>
               <a className='hover:text-primaria-hover' href="">Para Empresas</a>
               <a className='hover:text-primaria-hover' href="">Entrar</a>
@@ -54,8 +55,9 @@ const Header = () => {
         items-center justify-center gap-5 text-xl font-semibold transform transition-transform
         ${isMenuOpen ? "opacity-100" : "opacity-0"}`} 
         style={{transition:"transform 0.3s ease, opacity 0.3s ease"}}>
-          <li className='w-full p-4 text-center text-texto
-           hover:text-primaria-hover transition-all cursor-pointer'> Explorar </li>
+          <Link to={'/explore'}
+           className='w-full p-4 text-center text-texto
+           hover:text-primaria-hover transition-all cursor-pointer'> Explorar </Link>
            <li className='w-full p-4 text-center text-texto
            hover:text-primaria-hover transition-all cursor-pointer'> Ranking </li>
            <li className='w-full p-4 text-center text-texto
