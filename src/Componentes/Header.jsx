@@ -20,7 +20,7 @@ const Header = () => {
               <a href="">Ranking</a>
               <a href="">Para Empresas</a>
               <a href="">Entrar</a>
-              <a href="">Criar Conta</a>
+              <Link to={'/cadastroUser'}>Criar Conta</Link>
             </nav>
             <div className='flex h-2/3 gap-x-5 lg:pl-5'>
                 <img src="/src/assets/portugues.svg" alt="" />
@@ -32,11 +32,11 @@ const Header = () => {
           {/* Modo mobile -> medium */}
           <div className='hidden md:flex lg:hidden'>
             <nav className='w-5/6 text-lg text-texto flex items-center justify-center gap-x-3'>
-              <a to={'/explore'} className='hover:text-primaria-hover'>Explorar</a>
+              <Link to={'/explore'} className='hover:text-primaria-hover'>Explorar</Link>
               <a className='hover:text-primaria-hover' href="">Ranking</a>
               <a className='hover:text-primaria-hover' href="">Para Empresas</a>
               <a className='hover:text-primaria-hover' href="">Entrar</a>
-              <a className='hover:text-primaria-hover' href="">Criar Conta</a>
+              <Link to={'/cadastroUser'}>Criar Conta</Link>
             </nav>
             <div className='flex gap-x-5 w-1/4 items-center justify-center'>
                 <img className="h-3/4" src="/src/assets/portugues.svg" alt="" />
@@ -64,8 +64,8 @@ const Header = () => {
            hover:text-primaria-hover transition-all cursor-pointer'> Para Empresas </li>
            <li className='w-full p-4 text-center text-texto
            hover:text-primaria-hover transition-all cursor-pointer'> Entrar </li>
-           <li className='w-full p-4 text-center text-texto
-           hover:text-primaria-hover transition-all cursor-pointer'> Criar Conta </li>
+           <Link className='w-full p-4 text-center text-texto
+           hover:text-primaria-hover transition-all cursor-pointer'> Criar Conta </Link>
       </div>
     </header>
     
