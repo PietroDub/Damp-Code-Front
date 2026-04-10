@@ -4,6 +4,7 @@ import Search from '@/Componentes/Explorar/Search'
 import SideBar from '@/Componentes/Explorar/SideBar'
 import Footer from '@/Componentes/Footer'
 import Header from '@/Componentes/Header'
+import Criar_Desafio from '@/Componentes/Explorar/Criar_Desafio'
 import React from 'react'
 
 const Explore = () => {
@@ -16,6 +17,7 @@ const Explore = () => {
             <Search />
             <Melhores />
             <Niveis />
+            <Criar_Desafio />
           </div>
         </div>
         <Footer />

@@ -2,7 +2,7 @@ import React from 'react'
 
 const SideBar = () => {
   return (
-    <section className='hidden lg:flex flex-col w-3/12 bg-fundo-claro p-5 m-5 h-fit'>
+    <section className='hidden md:flex flex-col w-3/12 bg-fundo-claro p-5 m-5 h-fit'>
         <h1 className='text-2xl text-amarelo'><b>Hackatons</b></h1>
         <nav className='flex flex-col text-texto text-lg'>
             <a href="">Front-End</a>
