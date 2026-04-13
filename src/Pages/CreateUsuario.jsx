@@ -1,3 +1,4 @@
+import Design from "@/Componentes/Form_cliente/Design";
 import { useState } from "react";
 
 const CreateUsuario = () => {
@@ -57,7 +58,9 @@ const CreateUsuario = () => {
 
   return (
     <div>
-      <h2>Criar Usuário</h2>
+      <Design />
+      <section>
+        <h2>Criar Usuário</h2>
 
       <form onSubmit={handleSubmit}>
         <input
@@ -85,6 +88,7 @@ const CreateUsuario = () => {
       </form>
 
       {message && <p>{message}</p>}
+      </section>
     </div>
   );
 };
