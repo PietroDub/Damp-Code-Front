@@ -1,3 +1,4 @@
+import Footer from "@/Componentes/Footer";
 import Design from "@/Componentes/Form_cliente/Design";
 import { useState } from "react";
 
@@ -57,38 +58,52 @@ const CreateUsuario = () => {
   }
 
   return (
-    <div>
+    <div className="w-full grid md:flex min-h-screen bg-fundo">
       <Design />
-      <section>
-        <h2>Criar Usuário</h2>
+      <section className="h-screen w-full md:w-1/2 flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center">
+          <div className="flex gap-x-4">
+            <h2 className="text-4xl text-primaria font-extrabold">Pressione</h2>
+            <h2 className="text-4xl text-amarelo font-extrabold">Start</h2>
+          </div>
+          <p className="text-primaria text-xl font-medium">Preencha seus dados</p>
+          <form className="flex flex-col items-center justify-center gap-y-10" onSubmit={handleSubmit}>
+            <input
+              placeholder="*Nome Completo"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="border-b-2 border-primaria text-amarelo text-xl font-bold"
+            />
 
-      <form onSubmit={handleSubmit}>
-        <input
-          placeholder="Nome"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
+            <input
+              placeholder="*Melhor @Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="border-b-2 border-primaria text-amarelo text-xl font-bold"
+            />
 
-        <input
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+            <input
+              type="password"
+              placeholder="*Senha"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="border-b-2 border-primaria text-amarelo text-xl font-bold"
 
-        <input
-          type="password"
-          placeholder="Senha"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+            />
 
-        <button type="submit" disabled={loading}>
-          {loading ? "Criando..." : "Criar Usuário"}
-        </button>
-      </form>
+            <button type="submit" disabled={loading} className="bg-rosa-claro py-5 px-10 text-xl rounded-full">
+              <b>{loading ? "Criando..." : "Criar Usuário"}</b>
+            </button>
 
-      {message && <p>{message}</p>}
+            <p className="text-primaria text-xl font-medium">Já tenho conta. Fazer Login.</p>
+          </form>
+
+          {message && <p>{message}</p>}
+        </div>
       </section>
+        <div className="w-full absolute bottom-0">
+          <Footer />
+        </div>
     </div>
   );
 };
