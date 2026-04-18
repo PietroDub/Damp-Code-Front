@@ -1,3 +1,5 @@
+import Footer from '@/Componentes/Footer';
+import Design from '@/Componentes/Form_cliente/Design';
 import React from 'react'
 import { useState } from 'react'
 
@@ -18,6 +20,7 @@ export default function Login() {
 
 async function handleLogin(e){
     // evite q a página recarregue
+    console.log("clicou");
     e.preventDefault();
 
     const response = await fetch("https://localhost:7092/api/Auth/login", {
@@ -42,11 +45,21 @@ async function handleLogin(e){
     localStorage.setItem("user", JSON.stringify(data))
 }
   return (
-    <form onSubmit={handleLogin}>
+    <div className='w-full grid md:flex min-h-screen bg-fundo'>
+      <Design />
+      <section className='h-screen w-full md:w-1/2 flex flex-col items-center justify-center'>
+        <div className="flex flex-col items-center justify-center">
+          <div className='flex gap-x-4'>
+            <h2 className='text-4xl text-primaria font-extrabold'>Pressione</h2>
+            <h2 className='text-4xl text-amarelo font-extrabold'>Return</h2>
+          </div>
+          <p className="text-primaria text-xl font-medium">Preencha seus dados</p>
+          <form className='flex flex-col items-center justify-center gap-y-10' onSubmit={handleLogin}>
       <input
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        className="border-b-2 border-primaria text-amarelo text-xl font-bold"
       />
 
       <input
@@ -54,9 +67,18 @@ async function handleLogin(e){
         placeholder="Senha"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        className="border-b-2 border-primaria text-amarelo text-xl font-bold"
       />
 
-      <button type="submit">Entrar</button>
+      <button className='cursor-pointer' type="submit">Entrar</button>
+
+      <p className="text-primaria text-xl font-medium">Não tenho uma conta. Cadastre-se.</p>
     </form>
+        </div>
+      </section>
+      <div className="w-full absolute bottom-0">
+        <Footer />
+      </div>
+    </div>
   )
 }
