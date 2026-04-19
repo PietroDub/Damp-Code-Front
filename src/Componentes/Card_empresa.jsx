@@ -15,7 +15,7 @@ const Card_empresa = ({texto, image}) => {
                         <h3 className='text-texto-secundario'><b>Premios</b></h3>
                     </div>
                 </div>
-            </div>
+    </div>
   )
 }
 export default Card_empresa

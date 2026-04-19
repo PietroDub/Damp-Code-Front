@@ -147,3 +147,12 @@
     @apply font-sans;
   }
 }
+
+
+.color-bends-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}

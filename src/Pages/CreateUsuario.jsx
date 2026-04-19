@@ -97,7 +97,7 @@ const CreateUsuario = () => {
               <b>{loading ? "Criando..." : "Criar Usuário"}</b>
             </button>
 
-            <p className="text-primaria text-xl font-medium">Já tenho conta. Fazer Login.</p>
+            <Link to={'/loginUser'} className="text-primaria text-xl font-medium">Já tenho conta. Fazer Login.</Link>
           </form>
 
           {message && <p>{message}</p>}

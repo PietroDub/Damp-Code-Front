@@ -2,6 +2,7 @@ import Footer from '@/Componentes/Footer';
 import Design from '@/Componentes/Form_cliente/Design';
 import React from 'react'
 import { useState } from 'react'
+import { Link } from 'react-router-dom';
 
 // 🧠 RESUMO DO FLUXO
 // Usuário envia form
@@ -73,7 +74,7 @@ async function handleLogin(e){
 
       <button className='cursor-pointer' type="submit">Entrar</button>
 
-      <p className="text-primaria text-xl font-medium">Não tenho uma conta. Cadastre-se.</p>
+      <Link to={'/cadastroUser'} className="text-primaria text-xl font-medium">Não tenho uma conta. Cadastre-se.</Link>
     </form>
         </div>
       </section>
