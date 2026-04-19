@@ -49,12 +49,13 @@ async function handleLogin(e){
       <Design />
       <section className='h-screen w-full md:w-1/2 flex flex-col items-center justify-center'>
         <div className="flex flex-col items-center justify-center">
+          <Link to={"/"} className='text-xl font-medium text-primaria'>voltar para a home</Link>
           <div className='flex gap-x-4'>
             <h2 className='text-4xl text-primaria font-extrabold'>Pressione</h2>
             <h2 className='text-4xl text-amarelo font-extrabold'>Return</h2>
           </div>
           <p className="text-primaria text-xl font-medium">Preencha seus dados</p>
-          <form className='flex flex-col items-center justify-center gap-y-10' onSubmit={handleLogin}>
+      <form className='flex flex-col items-center justify-center py-5 gap-y-10' onSubmit={handleLogin}>
       <input
         placeholder="Email"
         value={email}

@@ -4,6 +4,7 @@ import Home from './Pages/Home'
 import Explore from './Pages/Explore'
 import CreateUsuario from './Pages/CreateUsuario'
 import LoginUsuario from './Pages/LoginUsuario'
+import Escolha from './Pages/Escolha'
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Route path='/' element={<h1>Rota Não Encontrada!</h1>}></Route>
         <Route path='/cadastroUser' element={<CreateUsuario />}></Route>
         <Route path='/loginUser' element={<LoginUsuario />}></Route>
+        <Route path='/escolha' element={<Escolha />}></Route>
       </Routes>
   )
 }

@@ -1,6 +1,7 @@
 import Footer from "@/Componentes/Footer";
 import Design from "@/Componentes/Form_cliente/Design";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const CreateUsuario = () => {
   const [name, setName] = useState("");
@@ -62,6 +63,7 @@ const CreateUsuario = () => {
       <Design />
       <section className="h-screen w-full md:w-1/2 flex flex-col items-center justify-center">
         <div className="flex flex-col items-center justify-center">
+          <Link to={"/"} className='text-xl font-medium text-primaria'>voltar para a home</Link>
           <div className="flex gap-x-4">
             <h2 className="text-4xl text-primaria font-extrabold">Pressione</h2>
             <h2 className="text-4xl text-amarelo font-extrabold">Start</h2>

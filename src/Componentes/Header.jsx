@@ -19,8 +19,8 @@ const Header = () => {
               <Link to={'/explore'}>Explore</Link>
               <a href="">Ranking</a>
               <a href="">Para Empresas</a>
-              <Link to={'/loginUser'}>Entrar</Link>
-              <Link to={'/cadastroUser'}>Criar Conta</Link>
+              <Link to={'/escolha'}>Entrar</Link>
+              <Link to={'/escolha'}>Criar Conta</Link>
             </nav>
             <div className='flex h-2/3 gap-x-5 lg:pl-5'>
                 <img src="/src/assets/portugues.svg" alt="" />
@@ -35,8 +35,8 @@ const Header = () => {
               <Link to={'/explore'} className='hover:text-primaria-hover'>Explorar</Link>
               <a className='hover:text-primaria-hover' href="">Ranking</a>
               <a className='hover:text-primaria-hover' href="">Para Empresas</a>
-              <Link className='hover:text-primaria-hover' to={'/loginUser'}>Entrar</Link>
-              <Link className='hover:text-primaria-hover' to={'/cadastroUser'}>Criar Conta</Link>
+              <Link className='hover:text-primaria-hover' to={'/escolha'}>Entrar</Link>
+              <Link className='hover:text-primaria-hover' to={'/escolha'}>Criar Conta</Link>
             </nav>
             <div className='flex gap-x-5 w-1/4 items-center justify-center'>
                 <img className="h-3/4" src="/src/assets/portugues.svg" alt="" />
@@ -62,9 +62,9 @@ const Header = () => {
            hover:text-primaria-hover transition-all cursor-pointer'> Ranking </li>
            <li className='w-full p-4 text-center text-texto
            hover:text-primaria-hover transition-all cursor-pointer'> Para Empresas </li>
-           <Link to={'/loginUser'} className='w-full p-4 text-center text-texto
+           <Link to={'/escolha'} className='w-full p-4 text-center text-texto
            hover:text-primaria-hover transition-all cursor-pointer'>Entrar</Link>
-           <Link to={'/cadastroUser'} className='w-full p-4 text-center text-texto
+           <Link to={'/escolha'} className='w-full p-4 text-center text-texto
            hover:text-primaria-hover transition-all cursor-pointer'> Criar Conta </Link>
       </div>
     </header>
