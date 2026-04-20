@@ -15,22 +15,21 @@ const cards = [
   },
 ];
 
-const Design = () => {
+const Design = ({texto1, texto2, showCard = true}) => {
   return (
-    <div className='w-1/2  bg-fundo p-3'>
+    <div className='w-2/3  bg-fundo p-3'>
         <div className='w-full h-full hidden md:flex flex-col items-center gap-y-5'>
           <div className='w-full text-start gap-y-3 flex flex-col items-center h-3/5'>
             <h2 className='text-3xl text-rosa-claro'>Bem vindo, <b>Vencedor</b></h2>
             <img src="/src/assets/DAMPCode.svg" className="md:max-w-5/12 pt-3" alt="damp-code-logo" />
             <h2 className='text-xl text-primaria'><b>Onde desafios reais viram conquistas reais</b></h2>
-            <p className='text-lg text-texto w-4/5'>Participe de hackathons criados por empresas, comunidades e especialistas, com rankings, recompensas e reconhecimento profissional.
-                Na DAMPCode, você não só aprende — você resolve problemas reais, compete e interage com outros devs e constrói um portfólio que <b>importa</b>.'</p>
+            <p className='text-lg text-texto w-4/5'>{texto1}</p>
             <p className='text-lg hidden xl:flex text-texto w-4/5'>
-                Descubra desafios alinhados às tecnologias mais demandadas do mercado, evolua com feedbacks reais e acompanhe seu progresso através de níveis, XP e conquistas. Seja você iniciante ou avançado, a DAMPCode te coloca no caminho certo para crescer, se destacar e transformar aprendizado em oportunidade.
+                {texto2}
             </p>
             <button className='text-xl bg-amarelo mt-5 py-5 w-2/3 rounded-full text-fundo'><b>NÃO PERCA OPORTUNIDADES</b></button>
           </div>
-            <div className='card hidden md:flex w-full lg:w-2/3 h-2/5 items-start'>
+            <div className={`card w-full lg:w-2/3 h-2/5 items-start ${showCard ? 'hidden md:flex' : 'hidden'}`}>
                 <CardStack items={cards}/>
             </div>
         </div>

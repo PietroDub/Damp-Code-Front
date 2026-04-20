@@ -3,7 +3,7 @@ import Design from "@/Componentes/Form_cliente/Design";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const CreateUsuario = () => {
+const CreateEmpresa = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -60,8 +60,18 @@ const CreateUsuario = () => {
 
   return (
     <div className="w-full grid md:flex min-h-screen bg-fundo">
-      <Design texto1={"Participe de hackathons criados por empresas, comunidades e especialistas, com rankings, recompensas e reconhecimento profissional. Na DAMPCode, você não só aprende — você resolve problemas reais, compete e interage com outros devs e constrói um portfólio que <b>importa</b>"} texto2={"Descubra desafios alinhados às tecnologias mais demandadas do mercado, evolua com feedbacks reais e acompanhe seu progresso através de níveis, XP e conquistas. Seja você iniciante ou avançado, a DAMPCode te coloca no caminho certo para crescer, se destacar e transformar aprendizado em oportunidade."} showCard={true}/>
-                
+      <div className="w-full flex-col h-full hidden md:flex">
+        <Design 
+          texto1={
+            "Transforme desafios reais da sua empresa em competições de tecnologia que atraem os melhores talentos. Na DAMPCode, você cria hackathons personalizados, avalia habilidades práticas e conecta-se com desenvolvedores prontos para inovar e solucionar problemas de verdade."
+          } texto2={
+            "Reduza custos de recrutamento, acelere a inovação e fortaleça sua marca empregadora. Nossa plataforma oferece analytics detalhados, engajamento autêntico e um pipeline de talentos qualificados. Grandes empresas já usam a DAMPCode para identificar, testar e contratar devs que realmente fazem a diferença."
+          } showCard={false} />
+        <div className=" hidden lg:flex flex-col items-center justify-center w-2/3 p-5 gap-5">
+          <p className="text-texto">Crie uma conta de equipe parceira e tenha acesso a recursos personalizados, e muito mais!</p>
+          <a className="w-full lg:w-1/2 h-20 flex items-center justify-center bg-rosa-claro rounded-full text-xl font-bold text-fundo" href="">TRABALHE CONOSCO</a>
+        </div>
+      </div>
       <section className="h-screen w-full md:w-1/2 flex flex-col items-center justify-center">
         <div className="flex flex-col items-center justify-center">
           <Link to={"/"} className='text-xl font-medium text-primaria'>voltar para a home</Link>
@@ -104,11 +114,11 @@ const CreateUsuario = () => {
           {message && <p>{message}</p>}
         </div>
       </section>
-        <div className="w-full absolute bottom-0">
-          <Footer />
-        </div>
+      <div className="w-full absolute bottom-0">
+        <Footer />
+      </div>
     </div>
   );
 };
 
-export default CreateUsuario;
+export default CreateEmpresa;

@@ -5,6 +5,7 @@ import Explore from './Pages/Explore'
 import CreateUsuario from './Pages/CreateUsuario'
 import LoginUsuario from './Pages/LoginUsuario'
 import Escolha from './Pages/Escolha'
+import CreateEmpresa from './Pages/CreateEmpresa'
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Route path='/explore' element={<Explore />}></Route>
         <Route path='/' element={<h1>Rota Não Encontrada!</h1>}></Route>
         <Route path='/cadastroUser' element={<CreateUsuario />}></Route>
+        <Route path='/cadastroEmpresa' element={<CreateEmpresa />}></Route>
         <Route path='/loginUser' element={<LoginUsuario />}></Route>
         <Route path='/escolha' element={<Escolha />}></Route>
       </Routes>

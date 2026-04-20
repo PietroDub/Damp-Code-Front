@@ -47,7 +47,7 @@ const Escolha = () => {
         Crie seus próprios hackathons, firme parcerias e encontre as pessoas certas para sua empresa.
       </p>
       <Link 
-        to={'/cadastroUser'} 
+        to={'/cadastroEmpresa'} 
         className='text-xl font-bold bg-primaria hover:bg-primaria-hover h-1/4 w-full flex items-center justify-center rounded-lg'
       >
         Empresa
