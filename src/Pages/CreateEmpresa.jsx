@@ -24,38 +24,13 @@ const CreateEmpresa = () => {
       tecnologias: [] // pode mandar vazio por enquanto
     };
 
-    try {
-      const response = await fetch(
-        "https://localhost:7092/api/Auth/register/participante",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(user)
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Erro ao criar usuário");
-      }
-
-      const data = await response.json();
-
-      console.log("Usuário criado:", data);
-
-      setMessage("Usuário criado com sucesso!");
-
-      setName("");
-      setEmail("");
-      setPassword("");
-
-    } catch (error) {
-      console.error(error);
-      setMessage("Erro ao criar usuário");
-    } finally {
-      setLoading(false);
-    }
+    setDados({
+      name,
+      email,
+      password
+    });
+    
+  navigate("/cadastro/empresa/detalhes");
   }
 
   return (
@@ -66,7 +41,8 @@ const CreateEmpresa = () => {
             "Transforme desafios reais da sua empresa em competições de tecnologia que atraem os melhores talentos. Na DAMPCode, você cria hackathons personalizados, avalia habilidades práticas e conecta-se com desenvolvedores prontos para inovar e solucionar problemas de verdade."
           } texto2={
             "Reduza custos de recrutamento, acelere a inovação e fortaleça sua marca empregadora. Nossa plataforma oferece analytics detalhados, engajamento autêntico e um pipeline de talentos qualificados. Grandes empresas já usam a DAMPCode para identificar, testar e contratar devs que realmente fazem a diferença."
-          } showCard={false} />
+          } showCard={false} 
+          />
         <div className=" hidden lg:flex flex-col items-center justify-center w-2/3 p-5 gap-5">
           <p className="text-texto">Crie uma conta de equipe parceira e tenha acesso a recursos personalizados, e muito mais!</p>
           <a className="w-full lg:w-1/2 h-20 flex items-center justify-center bg-rosa-claro rounded-full text-xl font-bold text-fundo" href="">TRABALHE CONOSCO</a>
@@ -105,7 +81,7 @@ const CreateEmpresa = () => {
             />
 
             <button type="submit" disabled={loading} className="bg-rosa-claro py-5 px-10 text-xl rounded-full">
-              <b>{loading ? "Criando..." : "Criar Usuário"}</b>
+              <b>{loading ? "Criando..." : "Criar Empresa"}</b>
             </button>
 
             <Link to={'/loginUser'} className="text-primaria text-xl font-medium">Já tenho conta. Fazer Login.</Link>
