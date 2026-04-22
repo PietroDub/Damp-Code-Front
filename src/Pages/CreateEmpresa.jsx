@@ -1,15 +1,17 @@
 import Footer from "@/Componentes/Footer";
 import Design from "@/Componentes/Form_cliente/Design";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { use, useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { CadastroContext  } from "@/Componentes/utilidades/CadastroContext";
 
 const CreateEmpresa = () => {
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
+  const {setDados} = useContext(CadastroContext);
+  const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -17,20 +19,20 @@ const CreateEmpresa = () => {
     setLoading(true);
     setMessage("");
 
-    const user = {
-      name,
-      email,
-      password,
-      tecnologias: [] // pode mandar vazio por enquanto
-    };
-
-    setDados({
+    const dados = {
       name,
       email,
       password
-    });
+    };
+
+    setDados(dados);
     
   navigate("/cadastro/empresa/detalhes");
+
+  //   const [loading, setLoading] = useState(false);
+  // const [message, setMessage] = useState("");
+  
+  // {message && <p>{message}</p>}
   }
 
   return (
@@ -86,8 +88,6 @@ const CreateEmpresa = () => {
 
             <Link to={'/loginUser'} className="text-primaria text-xl font-medium">Já tenho conta. Fazer Login.</Link>
           </form>
-
-          {message && <p>{message}</p>}
         </div>
       </section>
       <div className="w-full absolute bottom-0">
