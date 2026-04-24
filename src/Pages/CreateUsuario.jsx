@@ -71,16 +71,23 @@ const CreateUsuario = () => {
           </div>
           <p className="text-primaria text-xl font-medium">Preencha seus dados</p>
           <form className="flex flex-col items-center justify-center gap-y-10" onSubmit={handleSubmit}>
-            <input
+                       <input
               placeholder="*Nome Completo"
               value={name}
+              required
+              minLength={8}
+              maxLength={150}
               onChange={(e) => setName(e.target.value)}
               className="border-b-2 border-primaria text-amarelo text-xl font-bold"
             />
 
             <input
+              type="email"
               placeholder="*Melhor @Email"
               value={email}
+              required
+              minLength={8}
+              maxLength={150}
               onChange={(e) => setEmail(e.target.value)}
               className="border-b-2 border-primaria text-amarelo text-xl font-bold"
             />
@@ -89,6 +96,8 @@ const CreateUsuario = () => {
               type="password"
               placeholder="*Senha"
               value={password}
+              required
+              minLength={10}
               onChange={(e) => setPassword(e.target.value)}
               className="border-b-2 border-primaria text-amarelo text-xl font-bold"
 

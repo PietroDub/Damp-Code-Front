@@ -6,6 +6,7 @@ import CreateUsuario from './Pages/CreateUsuario'
 import LoginUsuario from './Pages/LoginUsuario'
 import Escolha from './Pages/Escolha'
 import CreateEmpresa from './Pages/CreateEmpresa'
+import EmpresaDetalhes from './Pages/formEmpresa'
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path='/cadastroEmpresa' element={<CreateEmpresa />}></Route>
         <Route path='/loginUser' element={<LoginUsuario />}></Route>
         <Route path='/escolha' element={<Escolha />}></Route>
+        <Route path="/cadastroEmpresa/detalhes" element={<EmpresaDetalhes />} />
       </Routes>
   )
 }

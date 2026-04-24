@@ -10,7 +10,6 @@ export const CadastroProvider = ({children}) => {
     return (
     // Todos os componentes dentro disso podem acessar dados e setDados
       <CadastroContext.Provider value={{ dados, setdados}}> 
-      //aplicação em si
         {children}
       </CadastroContext.Provider>
     )

@@ -1,6 +1,6 @@
 import Footer from "@/Componentes/Footer";
 import Design from "@/Componentes/Form_cliente/Design";
-import { use, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CadastroContext  } from "@/Componentes/utilidades/CadastroContext";
 
@@ -10,24 +10,21 @@ const CreateEmpresa = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const {setDados} = useContext(CadastroContext);
+  const {dados, setdados} = useContext(CadastroContext);
   const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
 
-    setLoading(true);
-    setMessage("");
-
-    const dados = {
+    const dadosBasicos  = {
       name,
       email,
       password
     };
 
-    setDados(dados);
+    setdados(dadosBasicos );
     
-  navigate("/cadastro/empresa/detalhes");
+  navigate("/cadastroEmpresa/detalhes");
 
   //   const [loading, setLoading] = useState(false);
   // const [message, setMessage] = useState("");
@@ -62,13 +59,20 @@ const CreateEmpresa = () => {
             <input
               placeholder="*Nome Completo"
               value={name}
+              required
+              minLength={8}
+              maxLength={150}
               onChange={(e) => setName(e.target.value)}
               className="border-b-2 border-primaria text-amarelo text-xl font-bold"
             />
 
             <input
+              type="email"
               placeholder="*Melhor @Email"
               value={email}
+              required
+              minLength={8}
+              maxLength={150}
               onChange={(e) => setEmail(e.target.value)}
               className="border-b-2 border-primaria text-amarelo text-xl font-bold"
             />
@@ -77,13 +81,15 @@ const CreateEmpresa = () => {
               type="password"
               placeholder="*Senha"
               value={password}
+              required
+              minLength={10}
               onChange={(e) => setPassword(e.target.value)}
               className="border-b-2 border-primaria text-amarelo text-xl font-bold"
 
             />
 
-            <button type="submit" disabled={loading} className="bg-rosa-claro py-5 px-10 text-xl rounded-full">
-              <b>{loading ? "Criando..." : "Criar Empresa"}</b>
+            <button type="submit" className="bg-rosa-claro py-5 px-10 text-xl rounded-full">
+              <b>Criar Empresa</b>
             </button>
 
             <Link to={'/loginUser'} className="text-primaria text-xl font-medium">Já tenho conta. Fazer Login.</Link>
