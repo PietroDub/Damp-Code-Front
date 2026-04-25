@@ -1,13 +1,13 @@
-import React, {useContext, useState} from 'react'
-import { CadastroContext } from '@/Componentes/utilidades/CadastroContext'
-import Footer from '@/Componentes/Footer';
-
+import React, { useContext, useState } from "react";
+import { CadastroContext } from "@/Componentes/utilidades/CadastroContext";
+import Footer from "@/Componentes/Footer";
+import LightPillar from '@/Componentes/LightPillar';
 
 const EmpresaDetalhes = () => {
   // pega um contexto e usa
   const { dados } = useContext(CadastroContext);
 
-  // novos estados 
+  // novos estados
   const [cnpj, setCnpj] = useState("");
   const [nomeEmpresa, setNomeEmpresa] = useState("");
   const [area, setArea] = useState("");
@@ -15,7 +15,7 @@ const EmpresaDetalhes = () => {
   const [tecnologias, setTecnologias] = useState("");
   const [message, setMessage] = useState("");
 
-  async function handleSubmit(e){
+  async function handleSubmit(e) {
     e.preventDefault();
 
     const payload = {
@@ -24,59 +24,78 @@ const EmpresaDetalhes = () => {
       area,
       descricao,
       // divide e tira espaços
-      tecnologias: tecnologias.split(",").map(t => t.trim())
+      tecnologias: tecnologias.split(",").map((t) => t.trim()),
     };
 
-    try{
-        const response = await fetch(
-            "https://localhost:7092/api/Auth/register/empresa",
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(payload)
-            }
-        );
+    try {
+      const response = await fetch(
+        "https://localhost:7092/api/Auth/register/empresa",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        },
+      );
 
-        if(!response.ok){
-            throw new Error("Erro ao criar empresa!");
-        }
+      if (!response.ok) {
+        throw new Error("Erro ao criar empresa!");
+      }
 
-        // se der certo
-        const data = await response.json();
+      // se der certo
+      // console.log("TUDO CERTO!")
 
-        setMessage("Usuário criado com sucesso!");
+      setMessage("Usuário criado com sucesso!");
 
-        setCnpj("");
-        setNomeEmpresa("");
-        setArea("");
-        setDescricao("");
-        setTecnologias("");
-
-    } catch(error){
+      setCnpj("");
+      setNomeEmpresa("");
+      setArea("");
+      setDescricao("");
+      setTecnologias("");
+    } catch (error) {
       console.error(error);
       setMessage("Erro ao criar usuário!");
     }
   }
-    if (!dados?.email) {
-      return <p>Volte e preencha o cadastro primeiro</p>;
-    }
+  if (!dados?.email) {
+    return <p>Volte e preencha o cadastro primeiro</p>;
+  }
   return (
-    <div className='w-full min-h-screen flex items-center justify-center bg-fundo'>
-              <form
-        onSubmit={handleSubmit}
-        className="flex flex-col gap-y-8 w-full max-w-xl"
-      >
-        <h2 className="text-3xl text-primaria font-bold text-center">
+    
+    <div className="relative w-full min-h-screen bg-fundo overflow-hidden">
+
+  {/* 🔹 FUNDO */}
+  <div className="absolute inset-0 z-0">
+    <LightPillar
+      topColor="#5227FF"
+      bottomColor="#FF9FFC"
+      intensity={1}
+      rotationSpeed={0.3}
+      glowAmount={0.002}
+      pillarWidth={3}
+      pillarHeight={0.4}
+      noiseIntensity={0.5}
+      pillarRotation={25}
+      interactive={false}
+      mixBlendMode="screen"
+      quality="high"
+    />
+  </div>
+
+  {/* 🔹 CONTEÚDO */}
+  <div className="relative z-10 flex flex-col items-center justify-center min-h-screen">
+
+    <form className="flex flex-col gap-y-8 w-full max-w-xl p-10 rounded-xl border border-white/20 bg-white/10
+    shadow-lg backdrop-filter backdrop-blur-md"
+        onSubmit={handleSubmit}  > 
+        <h2 className="text-3xl text-amarelo font-bold text-center">
           Complete seu cadastro empresarial
         </h2>
 
         {/* 🔹 Dados do usuário (vindos do Context) */}
         <div className="flex flex-col gap-y-4">
-          <h3 className="text-xl text-primaria font-semibold">
-            Dados Básicas
-          </h3>
+          <h3 className="text-xl text-primaria font-semibold">Dados Básicas</h3>
 
           <input
             value={dados.name || ""}
@@ -101,20 +120,20 @@ const EmpresaDetalhes = () => {
             placeholder="CNPJ"
             value={cnpj}
             onChange={(e) => setCnpj(e.target.value)}
-              //verificações
-              required
-              minLength={14}
-              maxLength={18}
-              pattern="\d{2}\.?\d{3}\.?\d{3}/?\d{4}-?\d{2}"
+            //verificações
+            required
+            minLength={14}
+            maxLength={18}
+            pattern="\d{2}\.?\d{3}\.?\d{3}/?\d{4}-?\d{2}"
             className="border-b-2 border-primaria text-amarelo text-lg focus:border-amarelo invalid:border-red-500"
           />
 
           <input
             placeholder="Área de atuação (ex: Fintech, SaaS...)"
             value={area}
-              required
-              minLength={3}
-              maxLength={50}
+            required
+            minLength={3}
+            maxLength={50}
             onChange={(e) => setArea(e.target.value)}
             className="border-b-2 border-primaria text-amarelo text-lg focus:border-amarelo invalid:border-red-500"
           />
@@ -122,9 +141,9 @@ const EmpresaDetalhes = () => {
           <textarea
             placeholder="Descrição da empresa"
             value={descricao}
-              required
-              minLength={10}
-              maxLength={300}
+            required
+            minLength={10}
+            maxLength={300}
             onChange={(e) => setDescricao(e.target.value)}
             className="border-2 border-primaria text-amarelo text-lg p-2 rounded focus:border-amarelo invalid:border-red-500"
           />
@@ -132,25 +151,32 @@ const EmpresaDetalhes = () => {
           <input
             placeholder="Tecnologias (separadas por vírgula: React, .NET, Node)"
             value={tecnologias}
-              required
-              minLength={2}
+            required
+            minLength={2}
             onChange={(e) => setTecnologias(e.target.value)}
-            className="border-b-2 border-primaria text-amarelo text-lg focus:border-amarelo invalid:border-red-500"/>
+            className="border-b-2 border-primaria text-amarelo text-lg focus:border-amarelo invalid:border-red-500"
+          />
         </div>
 
         {/* 🔹 Botão */}
         <button
           type="submit"
-          className="bg-rosa-claro py-4 rounded-full text-xl font-bold text-fundo">
+          className="bg-rosa-claro py-4 rounded-full text-xl font-bold text-fundo"
+        >
           Finalizar cadastro
-        </button>
-      </form>
-      {message && <p>{message}</p>}
-        <div className="w-full absolute bottom-0">
-          <Footer />
-        </div>
-    </div>
-  )
-}
+        </button>    </form>
 
-export default EmpresaDetalhes
+    {message && <p className="text-2xl text-texto">{message}</p>}
+
+  </div>
+
+  {/* 🔹 FOOTER */}
+  <div className="relative z-10">
+    <Footer />
+  </div>
+
+</div>
+  );
+};
+
+export default EmpresaDetalhes;
