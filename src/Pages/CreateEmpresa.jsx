@@ -34,7 +34,7 @@ const CreateEmpresa = () => {
 
   return (
     <div className="w-full grid md:flex min-h-screen bg-fundo">
-      <div className="w-full flex-col h-full hidden md:flex">
+      <div className="w-full flex-col items-center h-full hidden md:flex">
         <Design 
           texto1={
             "Transforme desafios reais da sua empresa em competições de tecnologia que atraem os melhores talentos. Na DAMPCode, você cria hackathons personalizados, avalia habilidades práticas e conecta-se com desenvolvedores prontos para inovar e solucionar problemas de verdade."
@@ -47,7 +47,7 @@ const CreateEmpresa = () => {
           <a className="w-full lg:w-1/2 h-20 flex items-center justify-center bg-rosa-claro rounded-full text-xl font-bold text-fundo" href="">TRABALHE CONOSCO</a>
         </div>
       </div>
-      <section className="h-screen w-full md:w-1/2 flex flex-col items-center justify-center">
+      <section className="h-screen w-full flex flex-col items-center justify-center">
         <div className="flex flex-col items-center justify-center">
           <Link to={"/"} className='text-xl font-medium text-primaria'>voltar para a home</Link>
           <div className="flex gap-x-4">

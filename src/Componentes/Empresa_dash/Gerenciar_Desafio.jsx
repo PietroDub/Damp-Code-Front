@@ -1,0 +1,63 @@
+import React from 'react'
+
+const Gerenciar_Desafio = () => {
+  return (
+<div className="min-h-screen bg-[#170A36] p-8 text-texto w-9/10">
+      <div className="overflow-x-auto rounded-2xl border border-[#30363d] bg-[#22114D] shadow-lg">
+        
+        <table className="w-full border-collapse">
+          
+          <thead className="bg-[#170A36] text-[#FFEA00]">
+            <tr className="text-left text-sm uppercase tracking-wider">
+              <th className="px-6 py-4">Nome</th>
+              <th className="px-6 py-4">Status</th>
+              <th className="px-6 py-4">Participantes</th>
+              <th className="px-6 py-4">Data Final</th>
+              <th className="px-6 py-4">Ações</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr className="border-t border-[#30363d] transition hover:bg-[#2a1761]">
+              
+              <td className="px-6 py-5 font-medium">
+                React JSX
+              </td>
+              <td className="px-6 py-5">
+                <span className="rounded-full bg-[#3fb950]/20 px-3 py-1 text-sm font-semibold text-[#3fb950]">
+                  Ativo
+                </span>
+              </td>
+              <td className="px-6 py-5 text-[#8b949e]">
+                100
+              </td>
+              <td className="px-6 py-5 text-[#8b949e]">
+                13/09/2026
+              </td>
+              <td className="px-6 py-5">
+                <div className="flex flex-wrap gap-2">
+                  
+                  <button className="rounded-lg bg-[#ef4444]/20 px-4 py-2 text-sm font-medium text-[#ef4444] transition hover:bg-[#ef4444] hover:text-white">
+                    Delete
+                  </button>
+
+                  <button className="rounded-lg bg-[#facc15]/20 px-4 py-2 text-sm font-medium text-[#facc15] transition hover:bg-[#facc15] hover:text-black">
+                    Edit
+                  </button>
+
+                  <button className="rounded-lg bg-[#6C48C5]/20 px-4 py-2 text-sm font-medium text-[#C68FE6] transition hover:bg-[#6C48C5] hover:text-white">
+                    Detalhes
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+
+      </div>
+    </div>
+  )
+}
+
+export default Gerenciar_Desafio

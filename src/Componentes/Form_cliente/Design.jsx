@@ -17,7 +17,7 @@ const cards = [
 
 const Design = ({texto1, texto2, showCard = true}) => {
   return (
-    <div className='w-2/3  bg-fundo p-3'>
+    <div className='w-full  bg-fundo p-3'>
         <div className='w-full h-full hidden md:flex flex-col items-center gap-y-5'>
           <div className='w-full text-start gap-y-3 flex flex-col items-center h-3/5'>
             <h2 className='text-3xl text-rosa-claro'>Bem vindo, <b>Vencedor</b></h2>

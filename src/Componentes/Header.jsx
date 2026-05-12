@@ -19,7 +19,7 @@ const Header = () => {
               <Link to={'/explore'}>Explore</Link>
               <a href="">Ranking</a>
               <a href="">Para Empresas</a>
-              <Link to={'/escolha'}>Entrar</Link>
+              <Link to={'/loginUser'}>Entrar</Link>
               <Link to={'/escolha'}>Criar Conta</Link>
             </nav>
             <div className='flex h-2/3 gap-x-5 lg:pl-5'>
@@ -35,7 +35,7 @@ const Header = () => {
               <Link to={'/explore'} className='hover:text-primaria-hover'>Explorar</Link>
               <a className='hover:text-primaria-hover' href="">Ranking</a>
               <a className='hover:text-primaria-hover' href="">Para Empresas</a>
-              <Link className='hover:text-primaria-hover' to={'/escolha'}>Entrar</Link>
+              <Link className='hover:text-primaria-hover' to={'/loginUser'}>Entrar</Link>
               <Link className='hover:text-primaria-hover' to={'/escolha'}>Criar Conta</Link>
             </nav>
             <div className='flex gap-x-5 w-1/4 items-center justify-center'>
@@ -53,7 +53,7 @@ const Header = () => {
     </div>
       <div className={`absolute z-10 top-20 md:hidden w-full bg-fundo-claro flex flex-col
         items-center justify-center gap-5 text-xl font-semibold transform transition-transform
-        ${isMenuOpen ? "opacity-100" : "opacity-0"}`} 
+        ${isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`} 
         style={{transition:"transform 0.3s ease, opacity 0.3s ease"}}>
           <Link to={'/explore'}
            className='w-full p-4 text-center text-texto
@@ -62,7 +62,7 @@ const Header = () => {
            hover:text-primaria-hover transition-all cursor-pointer'> Ranking </li>
            <li className='w-full p-4 text-center text-texto
            hover:text-primaria-hover transition-all cursor-pointer'> Para Empresas </li>
-           <Link to={'/escolha'} className='w-full p-4 text-center text-texto
+           <Link to={'/loginUser'} className='w-full p-4 text-center text-texto
            hover:text-primaria-hover transition-all cursor-pointer'>Entrar</Link>
            <Link to={'/escolha'} className='w-full p-4 text-center text-texto
            hover:text-primaria-hover transition-all cursor-pointer'> Criar Conta </Link>

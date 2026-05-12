@@ -7,6 +7,8 @@ import LoginUsuario from './Pages/LoginUsuario'
 import Escolha from './Pages/Escolha'
 import CreateEmpresa from './Pages/CreateEmpresa'
 import EmpresaDetalhes from './Pages/formEmpresa'
+import DashboardEmpresa from './Pages/Empresa/dashboard'
+import CreateHackaton from './Pages/Empresa/CreateHackaton'
 
 const App = () => {
   return (
@@ -19,6 +21,8 @@ const App = () => {
         <Route path='/loginUser' element={<LoginUsuario />}></Route>
         <Route path='/escolha' element={<Escolha />}></Route>
         <Route path="/cadastroEmpresa/detalhes" element={<EmpresaDetalhes />} />
+        <Route path='/dashboard/Empresa' element={<DashboardEmpresa/>}></Route>
+        <Route path='/cadastroHackaton' element={<CreateHackaton />}></Route>
       </Routes>
   )
 }
