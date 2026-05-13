@@ -1,27 +1,9 @@
 import React from "react";
 import Titulo from "../Titulo";
 
-const FormSection = ({ hackathon, setHackathon }) => {
-  // O handleChange é:
-
-  // um handle genérico
-  // Ele substitui:
-  // handleNome
-  // handleDescricao
-  // handleEmpresa
-  // handleArea
-  // etc.
-  // Tudo em UM só.
-  function handleChange(e) {
-    const { name, value } = e.target;
-
-    setHackathon({
-      ...hackathon,
-      [name]: value,
-    });
-  }
+const FormSection = ({ hackathon, handleChange }) => {
   return (
-    <section className="w-full flex flex-col gap-y-8 p-8 bg-fundo">
+    <section className="w-1/2 flex flex-col gap-y-8 p-8 bg-fundo">
       <Titulo texto1={"Criar"} texto2={"Hackathon"} />
 
       <form className="flex flex-col gap-y-6">
@@ -33,6 +15,7 @@ const FormSection = ({ hackathon, setHackathon }) => {
             type="text"
             name="nome"
             onChange={handleChange}
+            value={hackathon.nome}
             required
             minLength={5}
             maxLength={100}
@@ -58,6 +41,7 @@ const FormSection = ({ hackathon, setHackathon }) => {
             type="text"
             name="empresa"
             onChange={handleChange}
+            value={hackathon.empresa}
             required
             minLength={2}
             maxLength={100}
@@ -81,6 +65,7 @@ const FormSection = ({ hackathon, setHackathon }) => {
           <select
             name="status"
             onChange={handleChange}
+             value={hackathon.status}
             className="
               bg-fundo-claro
               border border-primaria
@@ -101,6 +86,7 @@ const FormSection = ({ hackathon, setHackathon }) => {
           <select
             name="area"
             onChange={handleChange}
+            value={hackathon.area}
             className="
               bg-fundo-claro
               border border-primaria
@@ -124,6 +110,7 @@ const FormSection = ({ hackathon, setHackathon }) => {
             name="descricao"
             onChange={handleChange}
             required
+            value={hackathon.descricao}
             minLength={30}
             maxLength={1000}
             placeholder="Descreva o hackathon"
