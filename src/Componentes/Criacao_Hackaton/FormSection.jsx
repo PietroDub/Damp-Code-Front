@@ -1,6 +1,8 @@
 import React from "react";
 import Titulo from "../Titulo";
 
+const tecnologias = ["React", "Node", "Python", "MongoDB", "SQL", "PowerBI"];
+
 const FormSection = ({ hackathon, handleChange }) => {
   return (
     <section className="w-1/2 flex flex-col gap-y-8 p-8 bg-fundo">
@@ -58,6 +60,70 @@ const FormSection = ({ hackathon, handleChange }) => {
           />
         </div>
 
+        <div className="flex flex-col gap-y-4">
+          <label className="text-amarelo font-bold">Cores do Tema</label>
+
+          <div className="flex gap-x-6">
+            {/* Principal */}
+            <div className="flex flex-col gap-y-2">
+              <span className="text-texto text-sm">Cor Principal</span>
+
+              <input
+                type="color"
+                name="corPrincipal"
+                value={hackathon.corPrincipal}
+                onChange={handleChange}
+                className="w-16 h-16 bg-transparent border-none cursor-pointer"
+              />
+            </div>
+
+            {/* Secundária */}
+            <div className="flex flex-col gap-y-2">
+              <span className="text-texto text-sm">Cor Secundária</span>
+
+              <input
+                type="color"
+                name="corSecundaria"
+                value={hackathon.corSecundaria}
+                onChange={handleChange}
+                className="w-16 h-16 bg-transparent border-none cursor-pointer"
+              />
+            </div>
+
+            {/* Fundo */}
+            <div className="flex flex-col gap-y-2">
+              <span className="text-texto text-sm">Cor de Fundo</span>
+
+              <input
+                type="color"
+                name="corFundo"
+                value={hackathon.corFundo}
+                onChange={handleChange}
+                className="w-16 h-16 bg-transparent border-none cursor-pointer"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Upload Logo */}
+        <div className="flex flex-col gap-y-2">
+          <label className="text-amarelo font-bold">Logo do Hackathon</label>
+
+          <input
+            type="file"
+            accept="image/*"
+            className="
+              text-texto
+              file:bg-primaria
+              file:border-none
+              file:px-4
+              file:py-2
+              file:rounded-lg
+              file:text-white
+            "
+          />
+        </div>
+
         {/* Status */}
         <div className="flex flex-col gap-y-2">
           <label className="text-amarelo font-bold">Status</label>
@@ -65,7 +131,7 @@ const FormSection = ({ hackathon, handleChange }) => {
           <select
             name="status"
             onChange={handleChange}
-             value={hackathon.status}
+            value={hackathon.status}
             className="
               bg-fundo-claro
               border border-primaria
@@ -126,23 +192,57 @@ const FormSection = ({ hackathon, handleChange }) => {
           />
         </div>
 
-        {/* Upload Logo */}
         <div className="flex flex-col gap-y-2">
-          <label className="text-amarelo font-bold">Logo do Hackathon</label>
+          <label className="text-amarelo font-bold">Premiação Total</label>
 
           <input
-            type="file"
-            accept="image/*"
+            type="number"
+            name="premiacao"
+            value={hackathon.premiacao}
+            onChange={handleChange}
+            placeholder="10000"
             className="
-              text-texto
-              file:bg-primaria
-              file:border-none
-              file:px-4
-              file:py-2
-              file:rounded-lg
-              file:text-white
-            "
+      bg-fundo-claro
+      border border-primaria
+      rounded-xl
+      p-4
+      text-texto
+    "
           />
+        </div>
+
+        <div className="flex flex-col gap-y-4">
+          <label className="text-amarelo font-bold">Tecnologias</label>
+
+          <div className="grid grid-cols-2 gap-4">
+            {tecnologias.map((tec) => (
+              <label key={tec} className="flex items-center gap-x-2 text-texto">
+                <input type="checkbox" value={tec} />
+
+                {tec}
+              </label>
+            ))}
+          </div>
+        </div>
+        <div className="grid grid-cols-3 gap-4">
+          {["Top 1", "Top 10", "Top 15", "Top 20", "Top 50", "Top 100"].map(
+            (item) => (
+              <button
+                key={item}
+                type="button"
+                className="
+        border border-primaria
+        rounded-xl
+        p-4
+        hover:border-amarelo
+        hover:bg-fundo-claro
+        transition
+      "
+              >
+                {item}
+              </button>
+            ),
+          )}
         </div>
       </form>
     </section>
