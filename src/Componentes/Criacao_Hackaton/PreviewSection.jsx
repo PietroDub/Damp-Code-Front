@@ -24,14 +24,14 @@ const PreviewSection = ({ hackathon }) => {
           <TitleHackaton
             texto1={hackathon.nome}
             texto2={` - ${hackathon.empresa}`}
-            cor1="#FFFFFF"
-            cor2="#FF003C"
+            cor1={hackathon.corPrincipal}
+            cor2={hackathon.corSecundaria}
           />
 
         </div>
 
         {/* BOTÃO */}
-        <button className='bg-red-600 hover:bg-red-700 transition-all duration-300 px-8 py-3 rounded-xl font-semibold text-lg shadow-lg'>
+        <button style={{backgroundColor: hackathon.corPrincipal}} className='transition-all duration-300 px-8 py-3 rounded-xl font-semibold text-lg shadow-lg'>
           Iniciar agora
         </button>
 
@@ -70,8 +70,10 @@ const PreviewSection = ({ hackathon }) => {
 
           <div>
             <SubTitleHackaton
-              texto="DESCRIÇÃO DO HACKATON"
-              cor="#FF003C"
+                texto="DESCRIÇÃO DO HACKATON
+                "
+                cor1={hackathon.corPrincipal}
+                cor2={hackathon.corSecundaria}
             />
 
             <p className='text-zinc-300 leading-relaxed mt-3 text-base'>
@@ -81,8 +83,9 @@ const PreviewSection = ({ hackathon }) => {
 
           <div>
             <SubTitleHackaton
-              texto="MÉTODO DE AVALIAÇÃO"
-              cor="#FF003C"
+                texto="MÉTODO DE AVALIAÇÃO"
+                cor1={hackathon.corPrincipal}
+                cor2={hackathon.corSecundaria}
             />
 
             <p className='text-zinc-300 leading-relaxed mt-3 text-base'>
@@ -94,19 +97,19 @@ const PreviewSection = ({ hackathon }) => {
 
         {/* DIREITA */}
         <div className='flex flex-col gap-y-10'>
-
           <div>
             <SubTitleHackaton
-              texto="QUAL É A SUA OPORTUNIDADE?"
-              cor="#FF003C"
+                texto="QUAL É A SUA OPORTUNIDADE?"
+                cor1={hackathon.corPrincipal}
+                cor2={hackathon.corSecundaria}
             />
 
             <p className='text-zinc-300 leading-relaxed mt-3 text-base'>
               Nesse hackaton, está escolhido o top{' '}
-              <span className='text-red-500 font-bold'>100</span>,
+              <span style={{color: hackathon.corPrincipal}} className=' font-bold'>100</span>,
               os 100 mais dedicados terão os benefícios,
               de mais de{' '}
-              <span className='text-red-500 font-bold'>
+              <span style={{color: hackathon.corPrincipal}} className=' font-bold'>
                 R$ 10000
               </span>{' '}
               distribuídos, e oportunidades na empresa.
@@ -114,9 +117,11 @@ const PreviewSection = ({ hackathon }) => {
           </div>
 
           <div>
+
             <SubTitleHackaton
-              texto="LISTA DE TECNOLOGIAS"
-              cor="#FF003C"
+                texto="LISTA DE TECNOLOGIAS"
+                cor1={hackathon.corPrincipal}
+                cor2={hackathon.corSecundaria}
             />
 
             <div className='flex items-center gap-x-5 mt-5'>
@@ -138,7 +143,7 @@ const PreviewSection = ({ hackathon }) => {
       </div>
 
       {/* FOOTER */}
-      <div className='flex gap-x-8 text-red-500 font-semibold text-xl pt-10'>
+      <div style={{color: hackathon.corPrincipal}} className='flex gap-x-8 font-semibold text-xl pt-10'>
 
         <button className='hover:text-white transition-all'>
           Desafio

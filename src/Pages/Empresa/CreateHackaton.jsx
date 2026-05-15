@@ -7,6 +7,8 @@ const CreateHackaton = () => {
   const[hackathon, setHackathon] = useState({
       nome: "",
       empresa: "",
+      corPrincipal: "",
+      corSecundaria: "",
       descricao: "",
       status: "",
       area: "",
