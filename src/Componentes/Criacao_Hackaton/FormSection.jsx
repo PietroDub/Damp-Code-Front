@@ -64,7 +64,6 @@ const FormSection = ({ hackathon, handleChange }) => {
           <label className="text-amarelo font-bold">Cores do Tema</label>
 
           <div className="flex gap-x-6">
-            {/* Principal */}
             <div className="flex flex-col gap-y-2">
               <span className="text-texto text-sm">Cor Principal</span>
 
@@ -76,7 +75,6 @@ const FormSection = ({ hackathon, handleChange }) => {
                 className="w-16 h-16 bg-transparent border-none cursor-pointer"
               />
             </div>
-
             {/* Secundária */}
             <div className="flex flex-col gap-y-2">
               <span className="text-texto text-sm">Cor Secundária</span>
@@ -89,7 +87,6 @@ const FormSection = ({ hackathon, handleChange }) => {
                 className="w-16 h-16 bg-transparent border-none cursor-pointer"
               />
             </div>
-
             {/* Fundo */}
             <div className="flex flex-col gap-y-2">
               <span className="text-texto text-sm">Cor de Fundo</span>
@@ -178,7 +175,7 @@ const FormSection = ({ hackathon, handleChange }) => {
             required
             value={hackathon.descricao}
             minLength={30}
-            maxLength={1000}
+            maxLength={500}
             placeholder="Descreva o hackathon"
             className="
               bg-fundo-claro
@@ -190,6 +187,11 @@ const FormSection = ({ hackathon, handleChange }) => {
               resize-none
             "
           />
+        </div>
+
+        <div className="flex flex-col gap-y-2">
+          <label className="text-amarelo font-bold">Método de Avaliação</label>
+
         </div>
 
         <div className="flex flex-col gap-y-2">
@@ -234,6 +236,7 @@ const FormSection = ({ hackathon, handleChange }) => {
         border border-primaria
         rounded-xl
         p-4
+        text-texto
         hover:border-amarelo
         hover:bg-fundo-claro
         transition

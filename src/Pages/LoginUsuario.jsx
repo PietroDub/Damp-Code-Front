@@ -2,6 +2,7 @@ import Footer from "@/Componentes/Footer";
 import Design from "@/Componentes/Form_cliente/Design";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "@/Contextos/AuthContext"
 
 // 🧠 RESUMO DO FLUXO
 // Usuário envia form
@@ -11,6 +12,9 @@ import { Link, useNavigate } from "react-router-dom";
 // verifica erro
 // pega JSON
 // salva no navegador
+
+const { setUser } = useContext(AuthContext)
+
 export default function Login() {
   // O useState é uma função que retorna um array com dois elementos: o valor atual do estado e uma função para atualizá-lo. A sintaxe básica é:
   const [email, setEmail] = useState("");
@@ -55,6 +59,8 @@ export default function Login() {
       // salva os dados do usuário no navegador (localStorage)
       // isso permite manter o usuário "logado"
       localStorage.setItem("user", JSON.stringify(data));
+
+      setUser(data)
 
       // 🔥 redireciona com base no tipo de usuário
       if (data.role === "empresa") {

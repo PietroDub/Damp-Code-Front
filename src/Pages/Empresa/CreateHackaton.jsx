@@ -7,12 +7,13 @@ const CreateHackaton = () => {
   const[hackathon, setHackathon] = useState({
       nome: "",
       empresa: "",
-      corPrincipal: "",
-      corSecundaria: "",
+      corPrincipal: "#6C48C5",
+      corSecundaria: "#C68FE6",
+      corFundo: "#170A36",
       descricao: "",
       status: "",
       area: "",
-      tecnologias: "",
+      tecnologias:[],
       // logo: ""
 
   })

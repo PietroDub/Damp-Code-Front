@@ -4,12 +4,12 @@ import SubTitleHackaton from './SubTitleHackaton'
 
 const PreviewSection = ({ hackathon }) => {
   return (
-    <section className='w-1/2 min-h-screen bg-[#070012] text-white px-10 py-8 flex flex-col gap-y-10'>
+    <section style={{backgroundColor: hackathon.corFundo}} className='w-1/2 min-h-screen bg-[#070012] text-white px-10 py-8 flex flex-col gap-y-10'>
 
       {/* HEADER */}
-      <div className='flex justify-between items-start w-full'>
+      <div className='flex-col lg:flex justify-between items-start w-full'>
 
-        <div className='flex items-center gap-x-5 w-3/4'>
+        <div className='flex items-center gap-x-5 w-full lg:w-3/4'>
 
           {/* LOGO */}
           <div className='w-24 h-24 rounded-full overflow-hidden flex items-center justify-center'>
@@ -26,7 +26,7 @@ const PreviewSection = ({ hackathon }) => {
             texto2={` - ${hackathon.empresa}`}
             cor1={hackathon.corPrincipal}
             cor2={hackathon.corSecundaria}
-          />
+          /> 
 
         </div>
 
@@ -63,27 +63,28 @@ const PreviewSection = ({ hackathon }) => {
       </div>
 
       {/* CONTEÚDO */}
-      <div className='grid grid-cols-2 gap-16'>
+      <div className='grid grid-cols-1 lg:grid-cols-2 gap-16'>
 
         {/* ESQUERDA */}
         <div className='flex flex-col gap-y-10'>
 
           <div>
             <SubTitleHackaton
-                texto="DESCRIÇÃO DO HACKATON
-                "
+                texto1="DESCRIÇÃO "
+                texto2={"DO HACKATON"}
                 cor1={hackathon.corPrincipal}
                 cor2={hackathon.corSecundaria}
             />
 
-            <p className='text-zinc-300 leading-relaxed mt-3 text-base'>
+            <p className='text-zinc-300 leading-relaxed mt-3 text-base wrap-break-word max-w-full'>
               {hackathon.descricao}
             </p>
           </div>
 
           <div>
             <SubTitleHackaton
-                texto="MÉTODO DE AVALIAÇÃO"
+                texto1="MÉTODO DE"
+                texto2={"AVALIAÇÃO"}
                 cor1={hackathon.corPrincipal}
                 cor2={hackathon.corSecundaria}
             />
@@ -99,7 +100,8 @@ const PreviewSection = ({ hackathon }) => {
         <div className='flex flex-col gap-y-10'>
           <div>
             <SubTitleHackaton
-                texto="QUAL É A SUA OPORTUNIDADE?"
+                texto1="QUAL É A SUA"
+                texto2={"OPORTUNIDADE"}
                 cor1={hackathon.corPrincipal}
                 cor2={hackathon.corSecundaria}
             />
@@ -119,7 +121,8 @@ const PreviewSection = ({ hackathon }) => {
           <div>
 
             <SubTitleHackaton
-                texto="LISTA DE TECNOLOGIAS"
+                texto1="LISTA DE"
+                texto2={"TECNOLOGIAS"}
                 cor1={hackathon.corPrincipal}
                 cor2={hackathon.corSecundaria}
             />
@@ -143,7 +146,7 @@ const PreviewSection = ({ hackathon }) => {
       </div>
 
       {/* FOOTER */}
-      <div style={{color: hackathon.corPrincipal}} className='flex gap-x-8 font-semibold text-xl pt-10'>
+      <div style={{color: hackathon.corPrincipal}} className='lg:flex gap-x-8 font-semibold text-xl pt-10 w-1/2'>
 
         <button className='hover:text-white transition-all'>
           Desafio
