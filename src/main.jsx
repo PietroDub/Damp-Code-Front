@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App.jsx'
 import { CadastroProvider } from "./Componentes/utilidades/CadastroContext"
-import { AuthProvider } from "./Contextos/AuthContext"
+import { AuthProvider } from "./Componentes/utilidades/AuthContext"
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <CadastroProvider>

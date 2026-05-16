@@ -1,6 +1,7 @@
 import FormSection from '@/Componentes/Criacao_Hackaton/FormSection'
 import PreviewSection from '@/Componentes/Criacao_Hackaton/PreviewSection'
 import Header from '@/Componentes/Header'
+import { m } from 'motion/react'
 import React, {useState} from 'react'
 
 const CreateHackaton = () => {
@@ -14,7 +15,8 @@ const CreateHackaton = () => {
       status: "",
       area: "",
       tecnologias:[],
-      // logo: ""
+      logo: "",
+      logoFile: null 
 
   })
 

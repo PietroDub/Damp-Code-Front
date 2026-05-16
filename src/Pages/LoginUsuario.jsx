@@ -1,8 +1,8 @@
 import Footer from "@/Componentes/Footer";
 import Design from "@/Componentes/Form_cliente/Design";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "@/Contextos/AuthContext"
+import { AuthContext } from "@/Componentes/utilidades/AuthContext"
 
 // 🧠 RESUMO DO FLUXO
 // Usuário envia form
@@ -13,10 +13,10 @@ import { AuthContext } from "@/Contextos/AuthContext"
 // pega JSON
 // salva no navegador
 
-const { setUser } = useContext(AuthContext)
 
 export default function Login() {
   // O useState é uma função que retorna um array com dois elementos: o valor atual do estado e uma função para atualizá-lo. A sintaxe básica é:
+  const { setUser } = useContext(AuthContext)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");

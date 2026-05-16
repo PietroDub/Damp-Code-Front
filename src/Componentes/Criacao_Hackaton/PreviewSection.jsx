@@ -10,16 +10,8 @@ const PreviewSection = ({ hackathon }) => {
       <div className='flex-col lg:flex justify-between items-start w-full'>
 
         <div className='flex items-center gap-x-5 w-full lg:w-3/4'>
-
-          {/* LOGO */}
-          <div className='w-24 h-24 rounded-full overflow-hidden flex items-center justify-center'>
-            <img
-              src={hackathon.logo}
-              alt="Logo"
-              className='w-full h-full object-cover'
-            />
-          </div>
-
+          <img src={hackathon.logo} />
+          
           {/* TITULO */}
           <TitleHackaton
             texto1={hackathon.nome}

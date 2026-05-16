@@ -1,5 +1,6 @@
 import React from "react";
 import Titulo from "../Titulo";
+import handleLogoChange from "../utilidades/HandleLogoChange";
 
 const tecnologias = ["React", "Node", "Python", "MongoDB", "SQL", "PowerBI"];
 
@@ -108,6 +109,7 @@ const FormSection = ({ hackathon, handleChange }) => {
 
           <input
             type="file"
+            onChange={handleLogoChange}
             accept="image/*"
             className="
               text-texto
