@@ -17,9 +17,9 @@ const cards = [
 
 const Design = ({texto1, texto2, showCard = true}) => {
   return (
-    <div className='w-full  bg-fundo p-3'>
-        <div className='w-full h-full hidden md:flex flex-col items-center gap-y-5'>
-          <div className='w-full text-start gap-y-3 flex flex-col items-center h-3/5'>
+    <div className='w-full  bg-fundo p-1'>
+        <div className='w-full h-full hidden md:flex flex-col items-center justify-center gap-y-5'>
+          <div className='w-full text-start gap-y-1 flex flex-col items-center h-2/5'>
             <h2 className='text-3xl text-rosa-claro'>Bem vindo, <b>Vencedor</b></h2>
             <img src="/src/assets/DAMPCode.svg" className="md:max-w-5/12 pt-3" alt="damp-code-logo" />
             <h2 className='text-xl text-primaria'><b>Onde desafios reais viram conquistas reais</b></h2>
@@ -29,7 +29,7 @@ const Design = ({texto1, texto2, showCard = true}) => {
             </p>
             <button className='text-xl bg-amarelo mt-5 py-5 w-2/3 rounded-full text-fundo'><b>NÃO PERCA OPORTUNIDADES</b></button>
           </div>
-            <div className={`card w-full lg:w-2/3 h-2/5 items-start ${showCard ? 'hidden md:flex' : 'hidden'}`}>
+            <div className={`card w-full lg:w-2/3 h-2/5 lg:1/5 items-start ${showCard ? 'hidden md:flex' : 'hidden'}`}>
                 <CardStack items={cards}/>
             </div>
         </div>

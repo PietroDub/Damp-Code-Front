@@ -3,10 +3,83 @@ import Titulo from "../Titulo";
 import handleLogoChange from "../utilidades/HandleLogoChange";
 
 const tecnologias = ["React", "Node", "Python", "MongoDB", "SQL", "PowerBI"];
+const rankings = ["Top 1", "Top 10", "Top 15", "Top 20", "Top 50", "Top 100"];
+const metodos = [
+  {
+    id: 1,
+    nome: "Avaliação IA",
+    descricao: "IA avalia performance automaticamente"
+  },
+  {
+    id: 2,
+    nome: "Autodata",
+    descricao: "Métricas automáticas de atividade"
+  },
+  {
+    id: 3,
+    nome: "Avaliação Manual",
+    descricao: "Equipe analisa os projetos"
+  }
+]
 
-const FormSection = ({ hackathon, handleChange }) => {
+const FormSection = ({ hackathon, handleChange, setHackathon }) => {
+  function handleTecnologias(e) {
+    const { value, checked } = e.target;
+
+    // se marcou
+    if (checked) {
+      setHackathon({
+        ...hackathon,
+        tecnologias: [...hackathon.tecnologias, value],
+      });
+    }
+
+    // se desmarcou
+    else {
+      setHackathon({
+        ...hackathon,
+        tecnologias: hackathon.tecnologias.filter((tec) => tec !== value),
+      });
+    }
+  }
+
+  function handleRankings(item) {
+    setHackathon({
+      ...hackathon,
+      ranking: item,
+    });
+  }
+
+//   Comparação mental
+// Checkbox
+
+// O próprio HTML já guarda o valor:
+
+// <input value="React" />
+
+// Então:
+
+// e.target.value
+
+// já resolve.
+
+// Botão
+
+// Botão não guarda:
+
+// Top 10
+// Top 5
+// Top 100
+
+// Ele só sabe:
+// "fui clicado".
+
+// Então você injeta manualmente:
+
+// handleRankings(item)
+
   return (
-    <section className="w-1/2 flex flex-col gap-y-8 p-8 bg-fundo">
+    <section className="w-full md:w-1/2 flex flex-col gap-y-8 p-8 bg-fundo">
       <Titulo texto1={"Criar"} texto2={"Hackathon"} />
 
       <form className="flex flex-col gap-y-6">
@@ -191,10 +264,6 @@ const FormSection = ({ hackathon, handleChange }) => {
           />
         </div>
 
-        <div className="flex flex-col gap-y-2">
-          <label className="text-amarelo font-bold">Método de Avaliação</label>
-
-        </div>
 
         <div className="flex flex-col gap-y-2">
           <label className="text-amarelo font-bold">Premiação Total</label>
@@ -204,6 +273,8 @@ const FormSection = ({ hackathon, handleChange }) => {
             name="premiacao"
             value={hackathon.premiacao}
             onChange={handleChange}
+            max={100000}
+            min={0}
             placeholder="10000"
             className="
       bg-fundo-claro
@@ -221,34 +292,56 @@ const FormSection = ({ hackathon, handleChange }) => {
           <div className="grid grid-cols-2 gap-4">
             {tecnologias.map((tec) => (
               <label key={tec} className="flex items-center gap-x-2 text-texto">
-                <input type="checkbox" value={tec} />
-
+                <input
+                  type="checkbox"
+                  value={tec}
+                  //ver se está marcado e add
+                  checked={hackathon.tecnologias.includes(tec) || false}
+                  //altera o estado
+                  onChange={handleTecnologias}
+                />
                 {tec}
               </label>
             ))}
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-4">
-          {["Top 1", "Top 10", "Top 15", "Top 20", "Top 50", "Top 100"].map(
-            (item) => (
+
+        <div className="flex flex-col gap-y-4">
+          <label className="text-amarelo font-bold">Quantos Ganham?</label>
+          <div className="grid grid-cols-3 gap-4">
+            {rankings.map((item) => (
               <button
                 key={item}
                 type="button"
-                className="
-        border border-primaria
-        rounded-xl
-        p-4
-        text-texto
-        hover:border-amarelo
-        hover:bg-fundo-claro
-        transition
-      "
+                className={`
+                  border rounded-xl p-4 transition
+                  
+                  ${
+          hackathon.ranking === item
+            ? "bg-amarelo border-amarelo text-fundo"
+            : "border-primaria text-texto hover:border-amarelo hover:bg-fundo-claro"
+        }
+        `}
+                onClick={() => handleRankings(item)}
               >
                 {item}
               </button>
-            ),
-          )}
+            ))}
+          </div>
         </div>
+
+        <div className="flex flex-col gap-y-2">
+          <label className="text-amarelo font-bold">Método de Avaliação</label>
+          <div className="grid grid-cols-2 gap-4 h-90">
+            {metodos.map((item) => (
+              <div className="bg-fundo-claro p-5 text-center">
+                <p className="text-amarelo"><b>{item.nome}</b></p>
+                <p className="text-white text-start">{item.descricao}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
       </form>
     </section>
   );

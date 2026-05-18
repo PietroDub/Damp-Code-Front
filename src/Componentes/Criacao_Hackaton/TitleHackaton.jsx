@@ -10,13 +10,13 @@ const TitleHackaton = ({ texto1, texto2, cor1, cor2 }) => {
           color: cor1,
           borderColor: cor1,
         }}
-        className="py-5 border-b-2"
+        className="py-5 border-b-2 wrap-anywhere"
       >
         {texto1}
       </h1>
 
       <h1
-        className="py-5 pl-1 border-b-2"
+        className="py-5 pl-1 border-b-2 hidden lg:flex"
         style={{
           color: cor2,
           borderColor: cor2,

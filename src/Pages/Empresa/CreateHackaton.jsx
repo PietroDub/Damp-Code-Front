@@ -12,9 +12,11 @@ const CreateHackaton = () => {
       corSecundaria: "#C68FE6",
       corFundo: "#170A36",
       descricao: "",
+      premiacao: "",
       status: "",
       area: "",
       tecnologias:[],
+      ranking: "",
       logo: "",
       logoFile: null 
 
@@ -43,7 +45,7 @@ const CreateHackaton = () => {
     <div className='min-h-screen bg-fundo'>
         <Header />
         <section className='w-full h-full flex'>
-            <FormSection  hackathon={hackathon} handleChange={handleChange}/>
+            <FormSection  hackathon={hackathon} handleChange={handleChange} setHackathon={setHackathon}/>
             <PreviewSection hackathon={hackathon}/>
         </section>
     </div>

@@ -4,14 +4,14 @@ import SubTitleHackaton from './SubTitleHackaton'
 
 const PreviewSection = ({ hackathon }) => {
   return (
-    <section style={{backgroundColor: hackathon.corFundo}} className='w-1/2 min-h-screen bg-[#070012] text-white px-10 py-8 flex flex-col gap-y-10'>
+    <section style={{backgroundColor: hackathon.corFundo}} className='w-1/2 min-h-screen bg-[#070012] text-white px-10 py-8 hidden md:flex flex-col gap-y-10'>
 
       {/* HEADER */}
       <div className='flex-col lg:flex justify-between items-start w-full'>
 
         <div className='flex items-center gap-x-5 w-full lg:w-3/4'>
           <img src={hackathon.logo} />
-          
+
           {/* TITULO */}
           <TitleHackaton
             texto1={hackathon.nome}
@@ -30,21 +30,26 @@ const PreviewSection = ({ hackathon }) => {
       </div>
 
       {/* INFORMAÇÕES */}
-      <div className='flex gap-x-10 text-sm text-zinc-300 border-b border-zinc-700 pb-6'>
+      <div className='flex flex-wrap gap-x-10 text-sm text-zinc-300 border-b border-zinc-700 pb-6'>
 
-        <p>{hackathon.area}</p>
+        <p>Área:<b>{hackathon.area}</b></p>
 
         {/* PARTICIPANTES */}
         <p>
-          {hackathon.participantes || '2001 pessoas já entraram'}
+          {hackathon.participantes || 'X pessoas já entraram'}
         </p>
 
         {/* VAGAS */}
         <p>
+          vagas em prêmios:
           <span className='font-bold text-white'>
-            {hackathon.vagas}
+            {hackathon.ranking}
           </span>{' '}
-          vagas em prêmios
+        </p>
+
+        {/* premiacao */}
+        <p>
+          Premiação: R$<b>{hackathon.premiacao}</b>
         </p>
 
         {/* DATA */}
@@ -70,19 +75,6 @@ const PreviewSection = ({ hackathon }) => {
 
             <p className='text-zinc-300 leading-relaxed mt-3 text-base wrap-break-word max-w-full'>
               {hackathon.descricao}
-            </p>
-          </div>
-
-          <div>
-            <SubTitleHackaton
-                texto1="MÉTODO DE"
-                texto2={"AVALIAÇÃO"}
-                cor1={hackathon.corPrincipal}
-                cor2={hackathon.corSecundaria}
-            />
-
-            <p className='text-zinc-300 leading-relaxed mt-3 text-base'>
-              {hackathon.metodo}
             </p>
           </div>
 
@@ -119,15 +111,16 @@ const PreviewSection = ({ hackathon }) => {
                 cor2={hackathon.corSecundaria}
             />
 
-            <div className='flex items-center gap-x-5 mt-5'>
+            <div className='flex flex-wrap items-center gap-x-5 mt-5'>
 
               {hackathon.tecnologias?.map((tec, index) => (
-                <img
-                  key={index}
-                  src={tec}
-                  alt="Tecnologia"
-                  className='w-10 h-10 object-contain'
-                />
+                // <img
+                //   key={index}
+                //   src={tec}
+                //   alt="Tecnologia"
+                //   className='w-10 h-10 object-contain'
+                // />
+                <p>{tec}</p>
               ))}
 
             </div>
@@ -135,10 +128,23 @@ const PreviewSection = ({ hackathon }) => {
 
         </div>
 
+        <div>
+            <SubTitleHackaton
+                texto1="MÉTODO DE"
+                texto2={"AVALIAÇÃO"}
+                cor1={hackathon.corPrincipal}
+                cor2={hackathon.corSecundaria}
+            />
+
+            <p className='text-zinc-300 leading-relaxed mt-3 text-base'>
+              {hackathon.metodo}
+            </p>
+          </div>
+
       </div>
 
       {/* FOOTER */}
-      <div style={{color: hackathon.corPrincipal}} className='lg:flex gap-x-8 font-semibold text-xl pt-10 w-1/2'>
+      <div style={{color: hackathon.corPrincipal}} className='hidden lg:flex align-top gap-x-8 font-semibold text-xl p-10 w-1/2'>
 
         <button className='hover:text-white transition-all'>
           Desafio
@@ -161,7 +167,7 @@ const PreviewSection = ({ hackathon }) => {
         </button>
 
       </div>
-
+          
     </section>
   )
 }
