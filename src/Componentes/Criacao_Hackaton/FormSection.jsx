@@ -22,7 +22,7 @@ const metodos = [
   }
 ]
 
-const FormSection = ({ hackathon, handleChange, setHackathon }) => {
+const FormSection = ({ hackathon, handleChange, setHackathon, handleSubmit }) => {
   function handleTecnologias(e) {
     const { value, checked } = e.target;
 
@@ -82,7 +82,7 @@ const FormSection = ({ hackathon, handleChange, setHackathon }) => {
     <section className="w-full md:w-1/2 flex flex-col gap-y-8 p-8 bg-fundo">
       <Titulo texto1={"Criar"} texto2={"Hackathon"} />
 
-      <form className="flex flex-col gap-y-6">
+      <form className="flex flex-col gap-y-6"  onSubmit={handleSubmit}>
         {/* Nome */}
         <div className="flex flex-col gap-y-2">
           <label className="text-amarelo font-bold">Nome do Hackathon</label>
@@ -342,7 +342,11 @@ const FormSection = ({ hackathon, handleChange, setHackathon }) => {
           </div>
         </div>
 
+        <div>
+            <input type="submit" value="Criar Hackaton" />
+        </div>
       </form>
+      {message && <p>{message}</p>}
     </section>
   );
 };

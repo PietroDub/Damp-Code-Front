@@ -22,30 +22,65 @@ const CreateHackaton = () => {
 
   })
 
-  function handleChange(e) {
+  async function handleChange(e) {
     // O handleChange é:
-
-  // um handle genérico
-  // Ele substitui:
-  // handleNome
-  // handleDescricao
-  // handleEmpresa
-  // handleArea
-  // etc.
-  // Tudo em UM só.
-  
+    
+    // um handle genérico
+    // Ele substitui:
+    // handleNome
+    // handleDescricao
+    // handleEmpresa
+    // handleArea
+    // etc.
+    // Tudo em UM só.
+    
     const {name, value} = e.target
-
+    
     setHackathon({
       ...hackathon,
-       [name]: value
+      [name]: value
     })
   }
+
+   async function handleSubmit(e){
+    e.preventDefault();
+
+      try {
+      const response = await fetch(
+        "https://localhost:7092/api/Auth/register/participante",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(hackathon)
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Erro ao criar Hackathon");
+      }
+
+      const data = await response.json();
+
+      console.log("Hackathon criado:", data);
+
+      setMessage("Hackathon criado com sucesso!");
+
+      navigate("/dashboard/Empresa");
+
+    } catch (error) {
+      console.error(error);
+      setMessage("Erro ao criar Hackathon");
+    } finally {
+      setLoading(false);
+    }
+    }
   return (
     <div className='min-h-screen bg-fundo'>
         <Header />
         <section className='w-full h-full flex'>
-            <FormSection  hackathon={hackathon} handleChange={handleChange} setHackathon={setHackathon}/>
+            <FormSection handleSubmit={handleSubmit}  hackathon={hackathon} handleChange={handleChange} setHackathon={setHackathon}/>
             <PreviewSection hackathon={hackathon}/>
         </section>
     </div>
