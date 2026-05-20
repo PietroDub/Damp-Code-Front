@@ -22,7 +22,7 @@ const metodos = [
   }
 ]
 
-const FormSection = ({ hackathon, handleChange, setHackathon, handleSubmit }) => {
+const FormSection = ({ hackathon, handleChange, setHackathon, handleSubmit, message }) => {
   function handleTecnologias(e) {
     const { value, checked } = e.target;
 
@@ -49,6 +49,7 @@ const FormSection = ({ hackathon, handleChange, setHackathon, handleSubmit }) =>
       ranking: item,
     });
   }
+  
 
 //   Comparação mental
 // Checkbox
@@ -77,6 +78,20 @@ const FormSection = ({ hackathon, handleChange, setHackathon, handleSubmit }) =>
 // Então você injeta manualmente:
 
 // handleRankings(item)
+
+ function handleLogoChange(e) {
+    const file = e.target.files[0]
+
+    if (!file) return
+
+    const previewUrl = URL.createObjectURL(file)
+
+    setHackathon({
+      ...hackathon,
+      logo: previewUrl,
+      logoFile: file
+    })
+  }
 
   return (
     <section className="w-full md:w-1/2 flex flex-col gap-y-8 p-8 bg-fundo">

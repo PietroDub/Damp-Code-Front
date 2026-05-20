@@ -87,6 +87,7 @@ export default function Login() {
         }
         texto2={
           "Continue evoluindo suas habilidades com novos desafios, acompanhe seu progresso em tempo real e destaque seus projetos para conquistar ainda mais oportunidades no mercado."
+        
         }
       />
       <section className="h-screen w-full md:w-1/2 flex flex-col items-center justify-center">

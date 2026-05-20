@@ -22,6 +22,8 @@ const CreateHackaton = () => {
 
   })
 
+   const [message, setMessage] = useState("");
+
   async function handleChange(e) {
     // O handleChange é:
     
@@ -80,7 +82,7 @@ const CreateHackaton = () => {
     <div className='min-h-screen bg-fundo'>
         <Header />
         <section className='w-full h-full flex'>
-            <FormSection handleSubmit={handleSubmit}  hackathon={hackathon} handleChange={handleChange} setHackathon={setHackathon}/>
+            <FormSection handleSubmit={handleSubmit} message={message} hackathon={hackathon} handleChange={handleChange} setHackathon={setHackathon}/>
             <PreviewSection hackathon={hackathon}/>
         </section>
     </div>
