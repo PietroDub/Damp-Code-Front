@@ -3,24 +3,39 @@ import PreviewSection from '@/Componentes/Criacao_Hackaton/PreviewSection'
 import Header from '@/Componentes/Header'
 import { m } from 'motion/react'
 import React, {useState} from 'react'
+import { useNavigate } from 'react-router-dom'
+
+//data atual
+const timeElapsed = Date.now();
+const today = new Date(timeElapsed);
+
 
 const CreateHackaton = () => {
-  const[hackathon, setHackathon] = useState({
-      nome: "",
-      empresa: "",
-      corPrincipal: "#6C48C5",
-      corSecundaria: "#C68FE6",
-      corFundo: "#170A36",
-      descricao: "",
-      premiacao: "",
-      status: "",
-      area: "",
-      tecnologias:[],
-      ranking: "",
-      logo: "",
-      logoFile: null 
 
-  })
+const navigate = useNavigate();
+
+const [hackathon, setHackathon] = useState({
+  Titulo: "",
+  Descricao: "",
+  Empresa: "",
+  Area: "",
+  Tecnologias: [],
+  Metodo: "",
+  Ranking: "",
+  Premiacao: 0,
+
+  corPrincipal: "#6C48C5",
+  corSecundaria: "#C68FE6",
+  corFundo: "#170A36",
+
+  Logo: "",
+  logoFile: null,
+
+  DataCriacao: today,
+  DataFinal: today, // <- aqui
+
+  status: false,
+})
 
    const [message, setMessage] = useState("");
 
@@ -44,18 +59,23 @@ const CreateHackaton = () => {
     })
   }
 
+  const [loading, setLoading] = useState(false)
    async function handleSubmit(e){
     e.preventDefault();
 
-      try {
+    const { logoFile, ...hackathonData } = hackathon
+    
+    setLoading(true) 
+    try {
+      console.log(hackathonData)
       const response = await fetch(
-        "https://localhost:7092/api/Auth/register/participante",
+        "https://localhost:7092/api/Hackathons/register/Hackathon",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify(hackathon)
+          body: JSON.stringify(hackathonData)
         }
       );
 
@@ -63,6 +83,7 @@ const CreateHackaton = () => {
         throw new Error("Erro ao criar Hackathon");
       }
 
+      
       const data = await response.json();
 
       console.log("Hackathon criado:", data);

@@ -8,105 +8,115 @@ const metodos = [
   {
     id: 1,
     nome: "Avaliação IA",
-    descricao: "IA avalia performance automaticamente"
+    descricao: "IA avalia performance automaticamente",
   },
   {
     id: 2,
     nome: "Autodata",
-    descricao: "Métricas automáticas de atividade"
+    descricao: "Métricas automáticas de atividade",
   },
   {
     id: 3,
     nome: "Avaliação Manual",
-    descricao: "Equipe analisa os projetos"
-  }
-]
+    descricao: "Equipe analisa os projetos",
+  },
+];
 
-const FormSection = ({ hackathon, handleChange, setHackathon, handleSubmit, message }) => {
+const FormSection = ({
+  hackathon,
+  handleChange,
+  setHackathon,
+  handleSubmit,
+  message,
+}) => {
   function handleTecnologias(e) {
-    const { value, checked } = e.target;
+  const { value, checked } = e.target;
 
-    // se marcou
-    if (checked) {
-      setHackathon({
-        ...hackathon,
-        tecnologias: [...hackathon.tecnologias, value],
-      });
-    }
-
-    // se desmarcou
-    else {
-      setHackathon({
-        ...hackathon,
-        tecnologias: hackathon.tecnologias.filter((tec) => tec !== value),
-      });
-    }
-  }
-
-  function handleRankings(item) {
+  if (checked) {
     setHackathon({
       ...hackathon,
-      ranking: item,
+      Tecnologias: [...(hackathon.Tecnologias || []), value],
+    });
+  } else {
+    setHackathon({
+      ...hackathon,
+      Tecnologias: (hackathon.Tecnologias || []).filter(
+        (tec) => tec !== value
+      ),
     });
   }
-  
+}
 
-//   Comparação mental
-// Checkbox
+function handleRankings(item) {
+  setHackathon({
+    ...hackathon,
+    Ranking: item,
+  });
+}
 
-// O próprio HTML já guarda o valor:
+function handleMetodo(item) {
+  setHackathon({
+    ...hackathon,
+    Metodo: item.nome,
+  });
+}
 
-// <input value="React" />
+function handleLogoChange(e) {
+  const file = e.target.files[0];
 
-// Então:
+  if (!file) return;
 
-// e.target.value
+  const previewUrl = URL.createObjectURL(file);
 
-// já resolve.
+  setHackathon({
+    ...hackathon,
+    Logo: previewUrl,
+    logoFile: file,
+  });
+}
 
-// Botão
+  //   Comparação mental
+  // Checkbox
 
-// Botão não guarda:
+  // O próprio HTML já guarda o valor:
 
-// Top 10
-// Top 5
-// Top 100
+  // <input value="React" />
 
-// Ele só sabe:
-// "fui clicado".
+  // Então:
 
-// Então você injeta manualmente:
+  // e.target.value
 
-// handleRankings(item)
+  // já resolve.
 
- function handleLogoChange(e) {
-    const file = e.target.files[0]
+  // Botão
 
-    if (!file) return
+  // Botão não guarda:
 
-    const previewUrl = URL.createObjectURL(file)
+  // Top 10
+  // Top 5
+  // Top 100
 
-    setHackathon({
-      ...hackathon,
-      logo: previewUrl,
-      logoFile: file
-    })
-  }
+  // Ele só sabe:
+  // "fui clicado".
+
+  // Então você injeta manualmente:
+
+  // handleRankings(item)
 
   return (
     <section className="w-full md:w-1/2 flex flex-col gap-y-8 p-8 bg-fundo">
       <Titulo texto1={"Criar"} texto2={"Hackathon"} />
 
-      <form className="flex flex-col gap-y-6"  onSubmit={handleSubmit}>
+      <form className="flex flex-col gap-y-6" onSubmit={handleSubmit}>
         {/* Nome */}
         <div className="flex flex-col gap-y-2">
           <label className="text-amarelo font-bold">Nome do Hackathon</label>
 
           <input
             type="text"
-            name="nome"
             onChange={handleChange}
-            value={hackathon.nome}
+            name="Titulo"
+            value={hackathon.Titulo}
             required
             minLength={5}
             maxLength={100}
@@ -130,9 +140,9 @@ const FormSection = ({ hackathon, handleChange, setHackathon, handleSubmit, mess
 
           <input
             type="text"
-            name="empresa"
+            name="Empresa"
             onChange={handleChange}
-            value={hackathon.empresa}
+            value={hackathon.Empresa}
             required
             minLength={2}
             maxLength={100}
@@ -232,14 +242,36 @@ const FormSection = ({ hackathon, handleChange, setHackathon, handleSubmit, mess
           </select>
         </div>
 
+        {/* DataFim */}
+        <div className="flex flex-col gap-y-2">
+          <label className="text-amarelo font-bold">Data Final:</label>
+
+          <input
+            name="DataFinal"
+            type="date"
+            onChange={handleChange}
+            value={hackathon.DataFinal}
+             min={hackathon.DataCriacao}
+             max="2028-12-31" 
+            className="
+              bg-fundo-claro
+              border border-primaria
+              rounded-xl
+              p-4
+              text-texto
+            "
+          />
+        
+        </div>
+
         {/* Área */}
         <div className="flex flex-col gap-y-2">
           <label className="text-amarelo font-bold">Área</label>
 
           <select
-            name="area"
+            name="Area"
             onChange={handleChange}
-            value={hackathon.area}
+            value={hackathon.Area}
             className="
               bg-fundo-claro
               border border-primaria
@@ -260,10 +292,10 @@ const FormSection = ({ hackathon, handleChange, setHackathon, handleSubmit, mess
           <label className="text-amarelo font-bold">Descrição</label>
 
           <textarea
-            name="descricao"
+            name="Descricao"
             onChange={handleChange}
             required
-            value={hackathon.descricao}
+            value={hackathon.Descricao}
             minLength={30}
             maxLength={500}
             placeholder="Descreva o hackathon"
@@ -279,14 +311,13 @@ const FormSection = ({ hackathon, handleChange, setHackathon, handleSubmit, mess
           />
         </div>
 
-
         <div className="flex flex-col gap-y-2">
           <label className="text-amarelo font-bold">Premiação Total</label>
 
           <input
             type="number"
-            name="premiacao"
-            value={hackathon.premiacao}
+            name="Premiacao"
+            value={hackathon.Premiacao}
             onChange={handleChange}
             max={100000}
             min={0}
@@ -311,7 +342,7 @@ const FormSection = ({ hackathon, handleChange, setHackathon, handleSubmit, mess
                   type="checkbox"
                   value={tec}
                   //ver se está marcado e add
-                  checked={hackathon.tecnologias.includes(tec) || false}
+                  checked={hackathon.Tecnologias?.includes(tec) || false}
                   //altera o estado
                   onChange={handleTecnologias}
                 />
@@ -332,10 +363,10 @@ const FormSection = ({ hackathon, handleChange, setHackathon, handleSubmit, mess
                   border rounded-xl p-4 transition
                   
                   ${
-          hackathon.ranking === item
-            ? "bg-amarelo border-amarelo text-fundo"
-            : "border-primaria text-texto hover:border-amarelo hover:bg-fundo-claro"
-        }
+                    hackathon.Ranking === item
+                      ? "bg-amarelo border-amarelo text-fundo"
+                      : "border-primaria text-texto hover:border-amarelo hover:bg-fundo-claro"
+                  }
         `}
                 onClick={() => handleRankings(item)}
               >
@@ -345,20 +376,75 @@ const FormSection = ({ hackathon, handleChange, setHackathon, handleSubmit, mess
           </div>
         </div>
 
-        <div className="flex flex-col gap-y-2">
-          <label className="text-amarelo font-bold">Método de Avaliação</label>
-          <div className="grid grid-cols-2 gap-4 h-90">
-            {metodos.map((item) => (
-              <div className="bg-fundo-claro p-5 text-center">
-                <p className="text-amarelo"><b>{item.nome}</b></p>
-                <p className="text-white text-start">{item.descricao}</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {metodos.map((item) => (
+            <div
+              key={item.nome}
+              className={`
+  cursor-pointer
+  group
+  rounded-2xl
+  p-6
+  flex flex-col
+  gap-y-4
+  border
+  transition-all
+  duration-300
+
+  ${
+    hackathon.metodo === item.nome
+      ? `
+        border-amarelo
+        bg-[#241042]
+        shadow-[0_0_25px_rgba(255,204,0,0.18)]
+        scale-[1.02]
+      `
+      : `
+        bg-fundo-claro
+        border-primaria
+        hover:border-amarelo
+        hover:-translate-y-1
+        hover:shadow-[0_0_20px_rgba(198,143,230,0.15)]
+      `
+  }
+`}
+              onClick={() => handleMetodo(item)}
+            >
+              {/* HEADER */}
+              <div className="flex items-center justify-between">
+                <p className="text-amarelo font-bold text-xl ">{item.nome} </p>
+
+                <div className="w-3 h-3 rounded-full bg-primaria group-hover:bg-amarelo transition" />
               </div>
-            ))}
-          </div>
+
+              {/* DESCRIÇÃO */}
+              <p className="text-zinc-300 text-sm leading-relaxed">
+                {item.descricao}
+              </p>
+            </div>
+          ))}
         </div>
 
-        <div>
-            <input type="submit" value="Criar Hackaton" />
+        <div className="pt-6">
+          <input
+            type="submit"
+            value="Criar Hackathon"
+            className="
+      w-full
+      bg-primaria
+      hover:bg-primaria-hover
+      text-white
+      font-bold
+      text-lg
+      py-4
+      rounded-2xl
+      cursor-pointer
+      transition-all
+      duration-300
+      hover:scale-[1.01]
+      hover:shadow-[0_0_25px_rgba(108,72,197,0.35)]
+    "
+          />
         </div>
       </form>
       {message && <p>{message}</p>}

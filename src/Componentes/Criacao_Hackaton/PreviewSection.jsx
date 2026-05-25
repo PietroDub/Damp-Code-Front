@@ -9,8 +9,8 @@ const PreviewSection = ({ hackathon }) => {
       {/* HEADER */}
       <div className='flex-col lg:flex justify-between items-start w-full'>
 
-        <div className='flex items-center gap-x-5 w-full lg:w-3/4'>
-          <img src={hackathon.logo} />
+        <div className='flex items-center gap-x-5 w-full lg:w-3/4 pb-5'>
+          <img className='w-1/3' src={hackathon.logo || "/src/assets/DAMPCode.svg"} />
 
           {/* TITULO */}
           <TitleHackaton
@@ -78,6 +78,19 @@ const PreviewSection = ({ hackathon }) => {
             </p>
           </div>
 
+          <div>
+            <SubTitleHackaton
+                texto1="MÉTODO DE"
+                texto2={"AVALIAÇÃO"}
+                cor1={hackathon.corPrincipal}
+                cor2={hackathon.corSecundaria}
+            />
+
+            <p className='text-zinc-300 leading-relaxed mt-3 text-base'>
+              {hackathon.metodo}
+            </p>
+          </div>
+
         </div>
 
         {/* DIREITA */}
@@ -120,26 +133,13 @@ const PreviewSection = ({ hackathon }) => {
                 //   alt="Tecnologia"
                 //   className='w-10 h-10 object-contain'
                 // />
-                <p>{tec}</p>
+                <p key={index}>{tec}</p>
               ))}
 
             </div>
           </div>
 
         </div>
-
-        <div>
-            <SubTitleHackaton
-                texto1="MÉTODO DE"
-                texto2={"AVALIAÇÃO"}
-                cor1={hackathon.corPrincipal}
-                cor2={hackathon.corSecundaria}
-            />
-
-            <p className='text-zinc-300 leading-relaxed mt-3 text-base'>
-              {hackathon.metodo}
-            </p>
-          </div>
 
       </div>
 
