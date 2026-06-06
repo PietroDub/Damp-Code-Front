@@ -68,7 +68,7 @@ export default function Login() {
         navigate("/dashboard/Empresa");
       } else {
         // senão (participante) → vai para outro dashboard
-        navigate("/participante/dashboard");
+        navigate("/dashboard/participante");
       }
     } catch (error) {
       // captura erros como falha de conexão com o servidor

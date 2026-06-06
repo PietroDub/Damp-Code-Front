@@ -1,6 +1,49 @@
-import React from 'react'
+import React , {useEffect, useState} from 'react'
 
 const Gerenciar_Desafio = () => {
+  
+  const [hackathons, setHackathons] = useState([])
+  
+  async function fetchHackathons(){
+    try{
+      const response = await fetch(
+        "https://localhost:7092/api/Hackathons"
+      );
+  
+      const data = await response.json();
+      console.log(data);
+  
+      setHackathons(data);
+    } catch (error){
+      console.error(error);
+    }
+  }
+  
+   useEffect(() => {
+      fetchHackathons();
+    }, []);
+
+  // const hackathons = [
+  //   {
+  //     hackathonId: 1,
+  //     titulo: "Bahhh",
+  //     status: "Ativo",
+  //     DataFinal: "2026-05-30T03:00:00.000+00:00"
+  //   },
+  //   {
+  //     hackathonId: 2,
+  //     titulo: "Bahhh2",
+  //     status: "Ativo",
+  //     DataFinal: "2026-05-30T03:00:00.000+00:00"
+  //   },
+  //   {
+  //     hackathonId: 3,
+  //     titulo: "Bahhh3",
+  //     status: "Ativo",
+  //     DataFinal: "2026-05-30T03:00:00.000+00:00"
+  //   }
+  // ]
+  
   return (
 <div className="min-h-screen bg-[#170A36] p-8 text-texto w-9/10">
       <div className="overflow-x-auto rounded-2xl border border-[#30363d] bg-[#22114D] shadow-lg">
@@ -18,22 +61,31 @@ const Gerenciar_Desafio = () => {
           </thead>
 
           <tbody>
-            <tr className="border-t border-[#30363d] transition hover:bg-[#2a1761]">
+            {hackathons.map((hackathon) =>(
+            <tr key={hackathon.hackathonId} className="border-t border-[#30363d] transition hover:bg-[#2a1761]">
               
               <td className="px-6 py-5 font-medium">
-                React JSX
+                {hackathon.titulo}
               </td>
               <td className="px-6 py-5">
-                <span className="rounded-full bg-[#3fb950]/20 px-3 py-1 text-sm font-semibold text-[#3fb950]">
-                  Ativo
-                </span>
-              </td>
-              <td className="px-6 py-5 text-[#8b949e]">
-                100
-              </td>
-              <td className="px-6 py-5 text-[#8b949e]">
-                13/09/2026
-              </td>
+  <span
+    className={`rounded-full px-3 py-1 text-sm font-semibold ${
+      hackathon.status
+        ? "bg-[#3fb950]/20 text-[#3fb950]"
+        : "bg-red-500/20 text-red-400"
+    }`}
+  >
+    {hackathon.status ? "Ativo" : "Inativo"}
+  </span>
+</td>
+
+<td className="px-6 py-5 text-[#8b949e]">
+  100
+</td>
+
+<td className="px-6 py-5 text-[#8b949e]">
+  {new Date(hackathon.dataFinal).toLocaleDateString("pt-BR")}
+</td>
               <td className="px-6 py-5">
                 <div className="flex flex-wrap gap-2">
                   
@@ -51,6 +103,7 @@ const Gerenciar_Desafio = () => {
                 </div>
               </td>
             </tr>
+            ))}
           </tbody>
 
         </table>

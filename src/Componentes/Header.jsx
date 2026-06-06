@@ -2,15 +2,20 @@ import React, { useContext, useState } from "react";
 import "../style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "@/Componentes/utilidades/AuthContext";
-
 
 const Header = () => {
   // usestate (é um estado, ou aberto ou false)
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  function handleLogout() {
+    logout();
+    navigate("/");
+  }
 
   return (
     <header className="bg-fundo-claro h-auto w-full flex items-center justify-center">
@@ -26,21 +31,17 @@ const Header = () => {
             <Link to={"/explore"}>Explore</Link>
             <a href="">Ranking</a>
             <a href="">Para Empresas</a>
-            {!user && (
-              <Link to={"/loginUser"}>
-              Entrar
-            </Link>
+            {!user && <Link to={"/loginUser"}>Entrar</Link>}
+            {!user && <Link to={"/escolha"}>Criar Conta</Link>}
+            {user && <Link to={"/dashboard/Empresa"}>DashBoard</Link>}
+            {user && (
+              <button
+                onClick={handleLogout}
+                className="hover:text-red-400 transition"
+              >
+                Sair
+              </button>
             )}
-           {!user && (
-             <Link to={"/escolha"}>
-              Criar Conta
-            </Link>
-           )}
-           {user && (
-            <Link to={"/dashboard/Empresa"}>
-               DashBoard
-            </Link>
-           )}
           </nav>
           <div className="flex h-2/3 gap-x-5 lg:pl-5">
             <img src="/src/assets/portugues.svg" alt="" />

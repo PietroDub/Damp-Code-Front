@@ -392,7 +392,7 @@ function handleLogoChange(e) {
   duration-300
 
   ${
-    hackathon.metodo === item.nome
+    hackathon.Metodo === item.nome
       ? `
         border-amarelo
         bg-[#241042]

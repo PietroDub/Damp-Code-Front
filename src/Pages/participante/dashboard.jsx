@@ -6,7 +6,7 @@ import Header from '@/Componentes/Header'
 import { Search } from 'lucide-react'
 import React from 'react'
 
-const dashboard = () => {
+const DashboardParticipantes = () => {
   return (
     <div className='bg-fundo w-full min-h-screen'>
         <Header />
@@ -23,4 +23,4 @@ const dashboard = () => {
   )
 }
 
-export default dashboard
+export default DashboardParticipantes
