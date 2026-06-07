@@ -62,17 +62,20 @@ function handleMetodo(item) {
 }
 
 function handleLogoChange(e) {
-  const file = e.target.files[0];
+ const file = e.target.files[0];
 
   if (!file) return;
 
-  const previewUrl = URL.createObjectURL(file);
+  const reader = new FileReader();
 
-  setHackathon({
-    ...hackathon,
-    Logo: previewUrl,
-    logoFile: file,
-  });
+  reader.onloadend = () => {
+    setHackathon(prev => ({
+      ...prev,
+      Logo: reader.result
+    }));
+  };
+
+  reader.readAsDataURL(file);
 }
 
   //   Comparação mental
