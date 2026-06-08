@@ -4,24 +4,33 @@ const Gerenciar_Desafio = () => {
   
   const [hackathons, setHackathons] = useState([])
   
-  async function fetchHackathons(){
-    try{
-      const response = await fetch(
-        "https://localhost:7092/api/Hackathons"
-      );
-  
-      const data = await response.json();
-      console.log(data);
-  
-      setHackathons(data);
-    } catch (error){
-      console.error(error);
-    }
+  async function fetchHackathons() {
+  try {
+
+    const user = JSON.parse(
+      localStorage.getItem("user")
+    );
+
+    const response = await fetch(
+      "https://localhost:7092/api/Hackathons"
+    );
+
+    const data = await response.json();
+
+    const hackathonsEmpresa = data.filter(
+      h => h.empresa === user.name
+    );
+
+    setHackathons(hackathonsEmpresa);
+
+  } catch (error) {
+    console.error(error);
   }
-  
-   useEffect(() => {
-      fetchHackathons();
-    }, []);
+
+}
+useEffect(() => {
+fetchHackathons();
+}, []);
 
   // const hackathons = [
   //   {

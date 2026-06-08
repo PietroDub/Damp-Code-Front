@@ -28,9 +28,9 @@ const Header = () => {
         {/* Modo large -> extra large */}
         <div className="hidden lg:flex w-4/6 xl:w-4/7">
           <nav className="w-5/5 text-xl text-texto flex items-center justify-between">
-            <Link to={"/explore"}>Explore</Link>
-            <a href="">Ranking</a>
-            <a href="">Para Empresas</a>
+            <a href="#explore">Explore</a>
+            <a href="#ranking">Ranking</a>
+            <a href="#empresas">Para Empresas</a>
             {!user && <Link to={"/loginUser"}>Entrar</Link>}
             {!user && <Link to={"/escolha"}>Criar Conta</Link>}
             {user && <Link to={"/dashboard/Empresa"}>DashBoard</Link>}
@@ -53,13 +53,13 @@ const Header = () => {
         {/* Modo mobile -> medium */}
         <div className="hidden md:flex lg:hidden">
           <nav className="w-5/6 text-lg text-texto flex items-center justify-center gap-x-3">
-            <Link to={"/explore"} className="hover:text-primaria-hover">
+            <a className="hover:text-primaria-hover" href="#explore">
               Explorar
-            </Link>
-            <a className="hover:text-primaria-hover" href="">
+            </a>
+            <a className="hover:text-primaria-hover" href="#ranking">
               Ranking
             </a>
-            <a className="hover:text-primaria-hover" href="">
+            <a className="hover:text-primaria-hover" href="#empresas">
               Para Empresas
             </a>
             {/* verifica se usuario está logado */}
@@ -96,28 +96,30 @@ const Header = () => {
         ${isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
         style={{ transition: "transform 0.3s ease, opacity 0.3s ease" }}
       >
-        <Link
-          to={"/explore"}
+        <a 
+          href="#explore"
           className="w-full p-4 text-center text-texto
            hover:text-primaria-hover transition-all cursor-pointer"
         >
           {" "}
           Explorar{" "}
-        </Link>
-        <li
+        </a>
+        <a
+          href="#ranking"
           className="w-full p-4 text-center text-texto
            hover:text-primaria-hover transition-all cursor-pointer"
         >
           {" "}
           Ranking{" "}
-        </li>
-        <li
+        </a>
+        <a
+          href="#empresas"
           className="w-full p-4 text-center text-texto
            hover:text-primaria-hover transition-all cursor-pointer"
         >
           {" "}
           Para Empresas{" "}
-        </li>
+        </a>
 
         {!user && (
           <Link

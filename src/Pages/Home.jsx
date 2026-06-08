@@ -13,12 +13,31 @@ const Home = () => {
   return (
     <div className='bg-fundo w-full min-h-screen'>
       <Header />
-      <Banner />
-      <Cards />
-      <Ranking_Home />
-      <Banner_empresa />
-      <Game />
-      <Comunidade_home />
+
+      <section id="inicio">
+        <Banner />
+      </section>
+
+      <section id="explore">
+        <Cards />
+      </section>
+
+      <section id="ranking">
+        <Ranking_Home />
+      </section>
+
+      <section id="empresas">
+        <Banner_empresa />
+      </section>
+
+      <section id="game">
+        <Game />
+      </section>
+
+      <section id="comunidade">
+        <Comunidade_home />
+      </section>
+
       <Footer />
     </div>
   )

@@ -3,6 +3,7 @@ import Design from "@/Componentes/Form_cliente/Design";
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "@/Componentes/utilidades/AuthContext"
+import BackButton from "@/Componentes/BackButton";
 
 // 🧠 RESUMO DO FLUXO
 // Usuário envia form
@@ -92,9 +93,7 @@ export default function Login() {
       />
       <section className="h-screen w-full md:w-1/2 flex flex-col items-center justify-center">
         <div className="flex flex-col items-center justify-center">
-          <Link to={"/"} className="text-xl font-medium text-primaria">
-            voltar para a home
-          </Link>
+          <BackButton />
           <div className="flex gap-x-4">
             <h2 className="text-4xl text-primaria font-extrabold">Pressione</h2>
             <h2 className="text-4xl text-amarelo font-extrabold">Return</h2>
