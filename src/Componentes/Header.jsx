@@ -28,9 +28,19 @@ const Header = () => {
         {/* Modo large -> extra large */}
         <div className="hidden lg:flex w-4/6 xl:w-4/7">
           <nav className="w-5/5 text-xl text-texto flex items-center justify-between">
-            <a href="#explore">Explore</a>
-            <a href="#ranking">Ranking</a>
-            <a href="#empresas">Para Empresas</a>
+            {user ? (
+              <Link to="/">Explore</Link>
+            ) : (
+              <a href="#explore">Explore</a>
+            )}
+            {user ? (
+              <Link to="/dashboard/ranking" className="">
+                Ranking
+              </Link>
+            ) : (
+              <a href="#ranking">Ranking</a>
+            )}
+            {!user && <a href="#empresas">Para Empresas</a>}
             {!user && <Link to={"/loginUser"}>Entrar</Link>}
             {!user && <Link to={"/escolha"}>Criar Conta</Link>}
             {user && <Link to={"/dashboard/Empresa"}>DashBoard</Link>}
@@ -53,15 +63,34 @@ const Header = () => {
         {/* Modo mobile -> medium */}
         <div className="hidden md:flex lg:hidden">
           <nav className="w-5/6 text-lg text-texto flex items-center justify-center gap-x-3">
-            <a className="hover:text-primaria-hover" href="#explore">
-              Explorar
-            </a>
-            <a className="hover:text-primaria-hover" href="#ranking">
-              Ranking
-            </a>
-            <a className="hover:text-primaria-hover" href="#empresas">
-              Para Empresas
-            </a>
+            {user ? (
+              <Link to="/" className="hover:text-primaria-hover">
+                Explore
+              </Link>
+            ) : (
+              <a className="text-texto hover:text-primaria-hover" href="#explore">
+                Explorar
+              </a>
+            )}
+
+            {user ? (
+              <Link
+                to="/dashboard/ranking"
+                className="hover:text-primaria-hover"
+              >
+                Ranking
+              </Link>
+            ) : (
+              <a href="#ranking" className="hover:text-primaria-hover">
+                Ranking
+              </a>
+            )}
+            {!user && (
+              <a className="hover:text-primaria-hover" href="#empresas">
+                Para Empresas
+              </a>
+            )}
+
             {/* verifica se usuario está logado */}
             {!user && (
               <Link className="hover:text-primaria-hover" to={"/loginUser"}>
@@ -96,30 +125,50 @@ const Header = () => {
         ${isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
         style={{ transition: "transform 0.3s ease, opacity 0.3s ease" }}
       >
-        <a 
-          href="#explore"
-          className="w-full p-4 text-center text-texto
+        {user ? (
+          <Link
+            to="/"
+            className="w-full p-4 text-center text-texto
            hover:text-primaria-hover transition-all cursor-pointer"
-        >
-          {" "}
-          Explorar{" "}
-        </a>
-        <a
-          href="#ranking"
-          className="w-full p-4 text-center text-texto
+          >
+            Explore
+          </Link>
+        ) : (
+          <a
+            href="#explore"
+            className="w-full p-4 text-center text-texto
            hover:text-primaria-hover transition-all cursor-pointer"
-        >
-          {" "}
-          Ranking{" "}
-        </a>
-        <a
-          href="#empresas"
-          className="w-full p-4 text-center text-texto
+          >
+            {" "}
+            Explorar{" "}
+          </a>
+        )}
+
+        {user ? (
+          <Link to="/dashboard/ranking" className="hover:text-primaria-hover">
+            Ranking
+          </Link>
+        ) : (
+          <a
+            href="#ranking"
+            className="w-full p-4 text-center text-texto
            hover:text-primaria-hover transition-all cursor-pointer"
-        >
-          {" "}
-          Para Empresas{" "}
-        </a>
+          >
+            {" "}
+            Ranking{" "}
+          </a>
+        )}
+
+        {!user && (
+          <a
+            href="#empresas"
+            className="w-full p-4 text-center text-texto
+           hover:text-primaria-hover transition-all cursor-pointer"
+          >
+            {" "}
+            Para Empresas{" "}
+          </a>
+        )}
 
         {!user && (
           <Link

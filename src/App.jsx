@@ -11,6 +11,7 @@ import DashboardEmpresa from "./Pages/Empresa/dashboard";
 import CreateHackaton from "./Pages/Empresa/CreateHackaton";
 import DashboardParticipantes from "./Pages/participante/dashboard";
 import HackathonPage from "./Pages/HackathonPage";
+import Ranking from "./Pages/Empresa/Ranking";
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
       ></Route>
       <Route path="/cadastroHackaton" element={<CreateHackaton />}></Route>
       <Route path="/hackathon/:id" element={<HackathonPage />} />
+      <Route path="/dashboard/ranking" element={<Ranking />} />
     </Routes>
   );
 };

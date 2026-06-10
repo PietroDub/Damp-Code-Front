@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const CardHackathon = ({ hackathon }) => {
   const navigate = useNavigate();
+  console.log(hackathon);
   return (
     <div
       style={{
