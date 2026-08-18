@@ -63,6 +63,8 @@ const [hackathon, setHackathon] = useState({
    async function handleSubmit(e){
     e.preventDefault();
 
+    console.log(hackathon)
+
     const { logoFile, ...hackathonData } = hackathon
     
     setLoading(true) 

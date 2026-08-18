@@ -10,12 +10,12 @@ const PreviewSection = ({ hackathon }) => {
       <div className='flex-col lg:flex justify-between items-start w-full'>
 
         <div className='flex items-center gap-x-5 w-full lg:w-3/4 pb-5'>
-          <img className='w-1/3' src={hackathon.logo || "/src/assets/DAMPCode.svg"} />
+          <img className='w-1/3' src={hackathon.Logo || "/src/assets/DAMPCode.svg"} />
 
           {/* TITULO */}
           <TitleHackaton
-            texto1={hackathon.nome}
-            texto2={` - ${hackathon.empresa}`}
+            texto1={hackathon.Titulo}
+            texto2={` - ${hackathon.Empresa}`}
             cor1={hackathon.corPrincipal}
             cor2={hackathon.corSecundaria}
           /> 
@@ -32,7 +32,7 @@ const PreviewSection = ({ hackathon }) => {
       {/* INFORMAÇÕES */}
       <div className='flex flex-wrap gap-x-10 text-sm text-zinc-300 border-b border-zinc-700 pb-6'>
 
-        <p>Área:<b>{hackathon.area}</b></p>
+        <p>Área:<b>{hackathon.Area}</b></p>
 
         {/* PARTICIPANTES */}
         <p>
@@ -49,12 +49,12 @@ const PreviewSection = ({ hackathon }) => {
 
         {/* premiacao */}
         <p>
-          Premiação: R$<b>{hackathon.premiacao}</b>
+          Premiação: R$<b>{hackathon.Premiacao}</b>
         </p>
 
         {/* DATA */}
         <p>
-          Termina {hackathon.data}
+          Termina {hackathon.Data}
         </p>
 
       </div>
@@ -74,7 +74,7 @@ const PreviewSection = ({ hackathon }) => {
             />
 
             <p className='text-zinc-300 leading-relaxed mt-3 text-base wrap-break-word max-w-full'>
-              {hackathon.descricao}
+              {hackathon.Descricao}
             </p>
           </div>
 
@@ -87,7 +87,7 @@ const PreviewSection = ({ hackathon }) => {
             />
 
             <p className='text-zinc-300 leading-relaxed mt-3 text-base'>
-              {hackathon.metodo}
+              {hackathon.Metodo}
             </p>
           </div>
 

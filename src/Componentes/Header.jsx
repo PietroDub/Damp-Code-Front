@@ -2,15 +2,20 @@ import React, { useContext, useState } from "react";
 import "../style.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "@/Componentes/utilidades/AuthContext";
-
 
 const Header = () => {
   // usestate (é um estado, ou aberto ou false)
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  function handleLogout() {
+    logout();
+    navigate("/");
+  }
 
   return (
     <header className="bg-fundo-claro h-auto w-full flex items-center justify-center">
@@ -23,24 +28,30 @@ const Header = () => {
         {/* Modo large -> extra large */}
         <div className="hidden lg:flex w-4/6 xl:w-4/7">
           <nav className="w-5/5 text-xl text-texto flex items-center justify-between">
-            <Link to={"/explore"}>Explore</Link>
-            <a href="">Ranking</a>
-            <a href="">Para Empresas</a>
-            {!user && (
-              <Link to={"/loginUser"}>
-              Entrar
-            </Link>
+            {user ? (
+              <Link to="/">Explore</Link>
+            ) : (
+              <a href="#explore">Explore</a>
             )}
-           {!user && (
-             <Link to={"/escolha"}>
-              Criar Conta
-            </Link>
-           )}
-           {user && (
-            <Link to={"/dashboard/Empresa"}>
-               DashBoard
-            </Link>
-           )}
+            {user ? (
+              <Link to="/dashboard/ranking" className="">
+                Ranking
+              </Link>
+            ) : (
+              <a href="#ranking">Ranking</a>
+            )}
+            {!user && <a href="#empresas">Para Empresas</a>}
+            {!user && <Link to={"/loginUser"}>Entrar</Link>}
+            {!user && <Link to={"/escolha"}>Criar Conta</Link>}
+            {user && <Link to={"/dashboard/Empresa"}>DashBoard</Link>}
+            {user && (
+              <button
+                onClick={handleLogout}
+                className="hover:text-red-400 transition"
+              >
+                Sair
+              </button>
+            )}
           </nav>
           <div className="flex h-2/3 gap-x-5 lg:pl-5">
             <img src="/src/assets/portugues.svg" alt="" />
@@ -52,15 +63,34 @@ const Header = () => {
         {/* Modo mobile -> medium */}
         <div className="hidden md:flex lg:hidden">
           <nav className="w-5/6 text-lg text-texto flex items-center justify-center gap-x-3">
-            <Link to={"/explore"} className="hover:text-primaria-hover">
-              Explorar
-            </Link>
-            <a className="hover:text-primaria-hover" href="">
-              Ranking
-            </a>
-            <a className="hover:text-primaria-hover" href="">
-              Para Empresas
-            </a>
+            {user ? (
+              <Link to="/" className="hover:text-primaria-hover">
+                Explore
+              </Link>
+            ) : (
+              <a className="text-texto hover:text-primaria-hover" href="#explore">
+                Explorar
+              </a>
+            )}
+
+            {user ? (
+              <Link
+                to="/dashboard/ranking"
+                className="hover:text-primaria-hover"
+              >
+                Ranking
+              </Link>
+            ) : (
+              <a href="#ranking" className="hover:text-primaria-hover">
+                Ranking
+              </a>
+            )}
+            {!user && (
+              <a className="hover:text-primaria-hover" href="#empresas">
+                Para Empresas
+              </a>
+            )}
+
             {/* verifica se usuario está logado */}
             {!user && (
               <Link className="hover:text-primaria-hover" to={"/loginUser"}>
@@ -95,28 +125,50 @@ const Header = () => {
         ${isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
         style={{ transition: "transform 0.3s ease, opacity 0.3s ease" }}
       >
-        <Link
-          to={"/explore"}
-          className="w-full p-4 text-center text-texto
+        {user ? (
+          <Link
+            to="/"
+            className="w-full p-4 text-center text-texto
            hover:text-primaria-hover transition-all cursor-pointer"
-        >
-          {" "}
-          Explorar{" "}
-        </Link>
-        <li
-          className="w-full p-4 text-center text-texto
+          >
+            Explore
+          </Link>
+        ) : (
+          <a
+            href="#explore"
+            className="w-full p-4 text-center text-texto
            hover:text-primaria-hover transition-all cursor-pointer"
-        >
-          {" "}
-          Ranking{" "}
-        </li>
-        <li
-          className="w-full p-4 text-center text-texto
+          >
+            {" "}
+            Explorar{" "}
+          </a>
+        )}
+
+        {user ? (
+          <Link to="/dashboard/ranking" className="hover:text-primaria-hover">
+            Ranking
+          </Link>
+        ) : (
+          <a
+            href="#ranking"
+            className="w-full p-4 text-center text-texto
            hover:text-primaria-hover transition-all cursor-pointer"
-        >
-          {" "}
-          Para Empresas{" "}
-        </li>
+          >
+            {" "}
+            Ranking{" "}
+          </a>
+        )}
+
+        {!user && (
+          <a
+            href="#empresas"
+            className="w-full p-4 text-center text-texto
+           hover:text-primaria-hover transition-all cursor-pointer"
+          >
+            {" "}
+            Para Empresas{" "}
+          </a>
+        )}
 
         {!user && (
           <Link
