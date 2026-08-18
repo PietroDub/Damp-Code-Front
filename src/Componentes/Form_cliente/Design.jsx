@@ -15,7 +15,7 @@ const cards = [
   },
 ];
 
-const Design = ({texto1, texto2, showCard = true}) => {
+const Design = ({texto1, texto2, showCard = false}) => {
   return (
     <div className='w-full  bg-fundo p-1'>
         <div className='w-full h-full hidden md:flex flex-col items-center justify-center gap-y-5'>

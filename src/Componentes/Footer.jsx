@@ -7,7 +7,7 @@ const Footer = () => {
 
         {/* TEXTO */}
         <span className="text-sm text-texto-secundario text-center md:text-left">
-          © 2026 <span className="text-texto font-medium">Damp Code</span>. Todos os direitos reservados.
+          &copy;{new Date().getFullYear()} <span className="text-texto font-medium">Damp Code</span>. Todos os direitos reservados.
         </span>
 
         {/* LINKS */}
